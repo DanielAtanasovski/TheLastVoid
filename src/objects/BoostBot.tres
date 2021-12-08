@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://src/objects/UnitGuide.gd" type="Script" id=1]
+[ext_resource path="res://assets/units/emBot.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+healthMin = 3
+healthMax = 4
+attackMin = 0
+attackMax = 1
+sprite = ExtResource( 2 )

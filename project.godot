@@ -1,0 +1,99 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "BaseState",
+"language": "GDScript",
+"path": "res://src/Base.gd"
+}, {
+"base": "Resource",
+"class": "FightCycleResource",
+"language": "GDScript",
+"path": "res://src/FightCycleResource.gd"
+}, {
+"base": "Area2D",
+"class": "Tile",
+"language": "GDScript",
+"path": "res://assets/world/objects/Tile.gd"
+}, {
+"base": "Area2D",
+"class": "UnitEgg",
+"language": "GDScript",
+"path": "res://src/objects/UnitEgg.gd"
+}, {
+"base": "Resource",
+"class": "UnitGuide",
+"language": "GDScript",
+"path": "res://src/objects/UnitGuide.gd"
+}, {
+"base": "Resource",
+"class": "UnitResource",
+"language": "GDScript",
+"path": "res://src/objects/UnitResource.gd"
+} ]
+_global_script_class_icons={
+"BaseState": "",
+"FightCycleResource": "",
+"Tile": "",
+"UnitEgg": "",
+"UnitGuide": "",
+"UnitResource": ""
+}
+
+[application]
+
+config/name="TheLastVoid"
+run/main_scene="res://Game.tscn"
+boot_splash/use_filter=false
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://icon.png"
+
+[autoload]
+
+Player="*res://Player.gd"
+FightManager="*res://src/FightManager.gd"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/size/resizable=false
+window/stretch/mode="2d"
+
+[importer_defaults]
+
+texture={
+"detect_3d": false,
+"flags/filter": false
+}
+
+[input]
+
+transitionToShop={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[mono]
+
+debugger_agent/wait_for_debugger=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+2d/snapping/use_gpu_pixel_snap=true
+environment/default_clear_color=Color( 0, 0, 0, 1 )
+environment/default_environment="res://default_env.tres"
+quality/size/resizable=true
