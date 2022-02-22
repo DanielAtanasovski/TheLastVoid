@@ -17,6 +17,11 @@ var target : Vector2 = Vector2.ZERO
 var targetSpeed : float = 0
 var timeElapsed : float = 0
 
+var animStarted : bool = false
+var bulletScene : PackedScene = preload("res://src/scenes/bullet.tscn")
+var bullet : Bullet = null
+var facingLeft : bool = false
+
 var leftUnitInfoPos : Vector2 = Vector2(-58, -2)
 var rightUnitInfoPos : Vector2 = Vector2(14, -2)
 var belowUnitInfoPos : Vector2 = Vector2(-22, 12)
@@ -39,6 +44,7 @@ func setUnitData(unit : UnitResource):
 	attackLabel.text = String(unit.attack);
 
 func faceLeft(value : bool):
+	facingLeft = value
 	unitSprite.set_flip_h(value)
 	if value:
 		infoPanel.rect_position = rightUnitInfoPos
@@ -85,6 +91,7 @@ func moveToPoint(_position : Vector2, _withinTime : float, delta : float) -> boo
 func moveToHome(_time : float, delta : float) -> bool:
 	return moveToPoint(spritePosition, _time, delta)
 
+# Returns true on done
 func playDeathAnimation() -> bool:
 	if deathAnimation.playing:
 		if deathAnimation.frame == deathAnimation.frames.get_frame_count("default")-1:
@@ -97,6 +104,29 @@ func playDeathAnimation() -> bool:
 		unitSprite.visible = false
 		deathAnimation.play()
 	return false
+
+# Returns true on done
+func playAbilityAnimation(_perk : int, _data : Array, delta : float) -> bool:
+	match _perk: 
+		UnitResource.Abilities.SuperchargedRound:
+			return _playSuperchargedRoundAnimation(_data[0])
+	return false
+
+# Return bool of if done animation
+func _playSuperchargedRoundAnimation(_endX : int) -> bool:
+	if animStarted:
+		if abs(bullet.position.x - _endX) < 10:
+			animStarted = false
+			bullet.setDir(facingLeft)
+			bullet.queue_free()
+			return true
+		return false
+	else:
+		bullet = bulletScene.instance()
+		add_child(bullet)
+		animStarted = true
+		return false
+
 
 func setSelected(selected: bool):
 	if selected:

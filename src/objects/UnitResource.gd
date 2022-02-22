@@ -5,70 +5,97 @@ enum Effects {
 	
 }
 
+# Structure of ability dictionary
 enum AbilityStructures {
-	AppliedAbilities,
-	AppliedAbilitiesMaxCooldowns,
-	AppliedAbilitiesCurrentCooldowns
+	AppliedAbilities, # Array : Abilities assigned to units
+	AppliedAbilitiesMaxCooldowns, # Array : Max cooldown of abilities
+	AppliedAbilitiesCurrentCooldowns # Array : Current cooldown of abilities
 }
 
+# Abilities specific to units
 enum Abilities {
-	SuperchargedRound,
-	ArtilleryRound
+	SuperchargedRound, # Attacks all units in enemy row
+	ArtilleryRound # Apply damage to first enemy in row every turn
 }
 
-export(int) var health;
-export(int) var attack;
-export(Texture) var sprite;
+var health;
+var attack;
+var sprite;
 
-export(bool) var alwaysAttack = false
+var alwaysAttack = false
 
-export(Array, Abilities) var appliedAbilitysEditor : Array = []
-export(Array, Abilities) var appliedAbilitysCooldownsEditor : Array = []
+var appliedAbilitys : Array = []
+var appliedAbilitysCooldowns : Array = []
 
-var AbilityDictionary : Dictionary = {
+var abilityDictionary : Dictionary = {
 	AbilityStructures.AppliedAbilities : [],
 	AbilityStructures.AppliedAbilitiesMaxCooldowns : [],
 	AbilityStructures.AppliedAbilitiesCurrentCooldowns : []
 }
 
-func _init(_health = 0, _attack = 0, _sprite = null) -> void:
+# Constructor
+func _init(_health = 0, _attack = 0, _sprite = null, _abilities = [], _abilitiesCooldowns = []) -> void:
 	self.health = _health;
 	self.attack = _attack;
 	self.sprite = _sprite;
+	self.abilityDictionary[AbilityStructures.AppliedAbilities] = _abilities
+	self.abilityDictionary[AbilityStructures.AppliedAbilitiesMaxCooldowns] = _abilitiesCooldowns
+	self.abilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns] = self.abilityDictionary[AbilityStructures.AppliedAbilitiesMaxCooldowns]
 
+# Return all abilties associated with this unit
+func getAbilities() -> Array:
+	return abilityDictionary[AbilityStructures.AppliedAbilities]
+
+# Reset ability cooldown to max cooldown
+func solveAbility(_ability : int) -> void:
+	for index in range(0, abilityDictionary[AbilityStructures.AppliedAbilities].size()):
+		if abilityDictionary[AbilityStructures.AppliedAbilities][index] == _ability:
+			abilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns][index] = abilityDictionary[AbilityStructures.AppliedAbilitiesMaxCooldowns][index]
+			return
+
+# Process all abilities cooldowns
+func decrementAbilityCooldowns() -> void:
+	for index in range(0, abilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns].size()):
+		abilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns][index] -= 1
+		if abilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns][index] < 0:	
+			abilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns][index] = 0
+
+# Return all abilities that are no longer on cooldown
 func getReadyAbilities() -> Array:
 	var readyAbilities = []
-	# Decrement	
-	for index in range(0, AbilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns].size()):
-		AbilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns][index] -= 1
-		if AbilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns][index] < 0:
-			# Apply Ability		
-			readyAbilities.append(AbilityDictionary[AbilityStructures.AppliedAbilities][index])
-			AbilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns][index] = AbilityDictionary[AbilityStructures.AppliedAbilitiesMaxCooldowns][index]
+
+	for index in range(0, abilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns].size()):
+		if abilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns][index] <= 0:
+			readyAbilities.append(abilityDictionary[AbilityStructures.AppliedAbilities][index])
+
 	return readyAbilities
 
+# Return boolean on whether given ability is associated with this unit
 func hasAbility(_ability : int) -> bool:
-	for x in AbilityDictionary[AbilityStructures.AppliedAbilities]:
+	for x in abilityDictionary[AbilityStructures.AppliedAbilities]:
 		if x == _ability:
 			return true
 	return false
 
+# Return boolean on whether this unit has any abilities
 func hasAnyAbility() -> bool:
-	for x in AbilityDictionary[AbilityStructures.AppliedAbilities]:
-			return true
+	if Abilities.size() > 0:
+		return true
 	return false
 
+# Add ability to this unit with given max cooldown
 func addAbility(_ability : int, _cooldown : int) -> void:
-	AbilityDictionary[AbilityStructures.AppliedAbilities].append(_ability)
-	AbilityDictionary[AbilityStructures.AppliedAbilitiesMaxCooldowns].append(_cooldown)
-	AbilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns].append(_cooldown)
+	abilityDictionary[AbilityStructures.AppliedAbilities].append(_ability)
+	abilityDictionary[AbilityStructures.AppliedAbilitiesMaxCooldowns].append(_cooldown)
+	abilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns].append(_cooldown)
 
+# Remove given ability from this unit
 func removeAbility(_ability : int) -> void:
-	var found : int = AbilityDictionary[AbilityStructures.AppliedAbilities].find(_ability)
+	var found : int = abilityDictionary[AbilityStructures.AppliedAbilities].find(_ability)
 	if found != -1:
-		AbilityDictionary[AbilityStructures.AppliedAbilities].remove(found)
-		AbilityDictionary[AbilityStructures.AppliedAbilitiesMaxCooldowns].remove(found)
-		AbilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns].remove(found)
+		abilityDictionary[AbilityStructures.AppliedAbilities].remove(found)
+		abilityDictionary[AbilityStructures.AppliedAbilitiesMaxCooldowns].remove(found)
+		abilityDictionary[AbilityStructures.AppliedAbilitiesCurrentCooldowns].remove(found)
 
 func mergeUnits(unit : UnitResource) -> void:
 	# TODO: Decide how to merge Abilitys

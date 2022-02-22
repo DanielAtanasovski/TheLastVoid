@@ -70,7 +70,9 @@ func generateRandomUnit() -> UnitResource:
 	var randomHealth = (randi() % randomUnitGuide.healthMax) + randomUnitGuide.healthMin;
 	var randomAttack = (randi() % randomUnitGuide.attackMax) + randomUnitGuide.attackMin;
 	
-	return UnitResource.new(randomHealth, randomAttack, randomUnitGuide.sprite)
+	print(randomUnitGuide.appliedAbilitysEditor)
+	
+	return UnitResource.new(randomHealth, randomAttack, randomUnitGuide.sprite, randomUnitGuide.appliedAbilitysEditor, randomUnitGuide.appliedAbilitysCooldownsEditor)
 
 func _on_Tier3_button_up() -> void:
 	Player.setEnergy(Player.energy - tier3Cost);

@@ -10,3 +10,5 @@ healthMax = 4
 attackMin = 2
 attackMax = 4
 sprite = ExtResource( 2 )
+appliedAbilitysEditor = [  ]
+appliedAbilitysCooldownsEditor = [  ]
