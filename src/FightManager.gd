@@ -56,6 +56,7 @@ var orderMap : Dictionary = {
 func _ready() -> void:
 	pass
 
+# Returns an Array of randomly generated units
 func generateUnits() -> Array:
 	var units : Array = [
 		null, # in the form of unit resources
@@ -74,6 +75,7 @@ func generateUnits() -> Array:
 		
 	return units
 
+# Generates an Array of random index values from 0-8
 func _getRandomIndexes() -> Array:
 	var indexes : Array = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 	var retIndexes : Array = []
@@ -95,6 +97,7 @@ func _getRandomIndexes() -> Array:
 	
 	return retIndexes
 
+# Returns a random generated unit within the UnitGuides provided
 func getRandomUnit() -> UnitResource:
 	var rng = RandomNumberGenerator.new()
 
@@ -156,6 +159,8 @@ func calculateFight() -> Dictionary:
 	fightCreation["Clock"] = currentCycle
 	return fightCreation
 
+# Move units towards center if available
+# TODO: Only if no enemy units in same row
 func condenseFight() -> void:
 	healthCheck()	
 	# Positioning Check
@@ -207,6 +212,7 @@ func condenseFight() -> void:
 				fightCycle.setupMove(index, index-3, nextOpponentGrid[index - 3], false)
 				actions.append(fightCycle)
 
+# Check health of all units
 func healthCheck() -> void:
 	# Health Check
 	# Player
@@ -240,8 +246,7 @@ func healthCheck() -> void:
 		actions.append(fightCycle)
 		nextOpponentGrid[del] = null
 		
-	
-# Loop through units
+# Loop through rows and initiate fight with frontlines
 func fightLoop() -> void:
 	for index in range(0, 3):
 		fightLoopRow(index)
@@ -257,12 +262,14 @@ func fightLoopRow(row : int) -> void:
 			# Perform Perk / Unit Action
 			unit = nextPlayerGrid[index]
 			if unit.hasAnyAbility():
-				resolveAbilities(unit.getReadyAbilities(), unit, index, false)
+				resolveAbilities(unit, index, false)
+				unit.decrementAbilityCooldowns()
 		if nextOpponentGrid[orderMap[index]] != null:
 			# Perform Perk / Unit Action
 			unit = nextOpponentGrid[orderMap[index]]
 			if unit.hasAnyAbility():
-				resolveAbilities(unit.getReadyAbilities(), unit, index, true)
+				resolveAbilities(unit, index, true)
+				unit.decrementAbilityCooldowns()
 	
 	# Final condense as abilities might kill
 	condenseFight()
@@ -271,17 +278,36 @@ func fightLoopRow(row : int) -> void:
 	if fightCycle != null:
 		actions.append(fightCycle)
 
-func resolveAbilities(abilities : Array, unit : UnitResource, positionIndex : int, opponent : bool) -> void:
-	for ability in abilities:
+# Resolves all abilities of given unit that are no longer in cooldown
+func resolveAbilities(unit : UnitResource, positionIndex : int, opponent : bool) -> void:
+	print(unit.getAbilities())
+	for ability in unit.getReadyAbilities():
 		match ability:
 			unit.Abilities.SuperchargedRound:
-				
+				print("SUPER ROUND")
+				# Check if opponent is in the row
 				if !_isUnitsInRow(_getRowIndex(positionIndex), !opponent):
 					continue
 					
 				var oppositeRow : Array = _getRow(positionIndex, !opponent)
 				var fightCycle : FightCycleResource = FightCycleResource.new()
-				fightCycle.setupPerk(unit.Abilities.SuperchargedRound, positionIndex, unit, oppositeRow)
+				var dictionary : Dictionary = {
+					"ROW" : oppositeRow,
+					"ROWINDEXES": _getRowIndexes(_getRowIndex(positionIndex))
+				}
+				fightCycle.setupAbility(unit.Abilities.SuperchargedRound, !opponent, positionIndex, unit, dictionary)
+				unit.solveAbility(unit.Abilities.SuperchargedRound)
+				actions.append(fightCycle)
+				
+				# TODO: APPLITIES NOT APPLYING ???!!!
+				if opponent:
+					nextPlayerGrid[dictionary["ROWINDEXES"][0]] = fightCycle.ActionDictionary[1]["Current"]["Resource"]
+					nextPlayerGrid[dictionary["ROWINDEXES"][1]] = fightCycle.ActionDictionary[2]["Current"]["Resource"]
+					nextPlayerGrid[dictionary["ROWINDEXES"][2]] = fightCycle.ActionDictionary[3]["Current"]["Resource"]
+				else:
+					nextOpponentGrid[dictionary["ROWINDEXES"][0]] = fightCycle.ActionDictionary[1]["Current"]["Resource"]
+					nextOpponentGrid[dictionary["ROWINDEXES"][1]] = fightCycle.ActionDictionary[2]["Current"]["Resource"]
+					nextOpponentGrid[dictionary["ROWINDEXES"][2]] = fightCycle.ActionDictionary[3]["Current"]["Resource"]
 				
 			unit.Abilities.ArtilleryRound:
 				pass
@@ -306,6 +332,7 @@ func _getUnitsInRow(row : int, opponent : bool) -> Array:
 			rowUnits.append(nextPlayerGrid[i])
 	return rowUnits
 
+# Returns an array of units in the given row and whether it is the opponent side
 func _getRow(index : int, opponent : bool) -> Array:
 	if index < 3:
 		return _getUnitsInRow(Row.Top, opponent)
@@ -314,6 +341,7 @@ func _getRow(index : int, opponent : bool) -> Array:
 	else:
 		return _getUnitsInRow(Row.Bottom, opponent)
 
+# Returns the row number of the given index position
 func _getRowIndex(index : int) -> int:
 	if index < 3:
 		return Row.Top
@@ -321,6 +349,17 @@ func _getRowIndex(index : int) -> int:
 		return Row.Middle
 	else:
 		return Row.Bottom
+
+# Returns list of indexes of a given row and whether it is the opponent side
+func _getRowIndexes(row : int) -> Array:
+	match row:
+		Row.Top:
+			return [0, 1, 2]
+		Row.Middle:
+			return [3, 4, 5]
+		Row.Bottom:
+			return [6, 7, 8]
+	return [null, null, null]
 
 func calculateRowFight(row : int) -> FightCycleResource:
 	var minValue : int = row * 3
@@ -406,5 +445,6 @@ func deepCopyGrid(grid : Array) -> Array:
 		else:
 			retArray[index] = UnitResource.new(grid[index].health,
 				grid[index].attack, grid[index].sprite)
+			retArray[index].abilityDictionary = grid[index].abilityDictionary
 	
 	return retArray

@@ -9,6 +9,7 @@ enum CycleType {
 }
 
 var cycleType : int = 0
+var abilityType : int = 0
 
 ## Datastructure to represent previous and current state of unit in the 
 ## current cycle
@@ -130,7 +131,7 @@ func setupAttack(_unit1Index : int, _unit1Resource : UnitResource, _unit2Index :
 	ActionDictionary[1]["Player"] = false
 
 # TODO Change Input to dictionary
-func setupPerk(_perkType : int, _positionIndex : int, _unit : UnitResource, _arrayOfUnits : Array) -> void:
+func setupAbility(_abilityType : int, _player : bool, _positionIndex : int, _unit : UnitResource, _dictionaryOfData : Dictionary) -> void:
 	# First Unit is unit performing attack
 	# Rest are units affected
 	# Form: [index, unit, index, unit, etc...]
@@ -139,37 +140,47 @@ func setupPerk(_perkType : int, _positionIndex : int, _unit : UnitResource, _arr
 	# NOTE: This is fixed to exactly 3 in enemy units lane,
 	# This 'should' be expanded to be size independent and for varying
 	# formations.
-	cycleType = CycleType.Perk
-	ActionDictionary[0]["Previous"]["Index"] = _arrayOfUnits[0]
-	ActionDictionary[0]["Previous"]["Resource"] = _duplicateUnit(_arrayOfUnits[1])
-	ActionDictionary[0]["Current"]["Index"] = _arrayOfUnits[0]
-	ActionDictionary[0]["Current"]["Resource"] = _duplicateUnit(_arrayOfUnits[1])
-	var baseUnit : UnitResource = ActionDictionary[0]["Current"]["Resource"]
-	var unit : UnitResource
+	cycleType = CycleType.Ability
 	
-	# First Enemy Unit 2,3
-	ActionDictionary[1]["Previous"]["Index"] = _arrayOfUnits[2]
-	ActionDictionary[1]["Previous"]["Resource"] = _duplicateUnit(_arrayOfUnits[3])
-	ActionDictionary[1]["Current"]["Index"] = _arrayOfUnits[2]
-	ActionDictionary[1]["Current"]["Resource"] = _duplicateUnit(_arrayOfUnits[3])
-	unit = ActionDictionary[1]["Current"]["Resource"]
-	unit.health -= baseUnit.attack
-	
-	# Second Enemy Unit 4,5
-	ActionDictionary[2]["Previous"]["Index"] = _arrayOfUnits[4]
-	ActionDictionary[2]["Previous"]["Resource"] = _duplicateUnit(_arrayOfUnits[5])
-	ActionDictionary[2]["Current"]["Index"] = _arrayOfUnits[4]
-	ActionDictionary[2]["Current"]["Resource"] = _duplicateUnit(_arrayOfUnits[5])
-	unit = ActionDictionary[2]["Current"]["Resource"]
-	unit.health -= floor(baseUnit.attack / 2)
-	
-	# Third Enemy Unity 6,7
-	ActionDictionary[3]["Previous"]["Index"] = _arrayOfUnits[6]
-	ActionDictionary[3]["Previous"]["Resource"] = _duplicateUnit(_arrayOfUnits[7])
-	ActionDictionary[3]["Current"]["Index"] = _arrayOfUnits[6]
-	ActionDictionary[3]["Current"]["Resource"] = _duplicateUnit(_arrayOfUnits[7])
-	unit = ActionDictionary[3]["Current"]["Resource"]
-	unit.health -= floor(baseUnit.attack / 2)
+	match _abilityType:
+		# SuperCharged Round Ability
+		UnitResource.Abilities.SuperchargedRound:
+			abilityType = UnitResource.Abilities.SuperchargedRound
+			ActionDictionary[0]["Previous"]["Index"] = _positionIndex
+			ActionDictionary[0]["Previous"]["Resource"] = _duplicateUnit(_unit)
+			ActionDictionary[0]["Current"]["Index"] = _positionIndex
+			ActionDictionary[0]["Current"]["Resource"] = _duplicateUnit(_unit)
+			ActionDictionary[0]["Player"] = _player
+			var baseUnit : UnitResource = _unit
+			var unit : UnitResource
+			
+			# First Enemy Unit 2,3
+			ActionDictionary[1]["Previous"]["Index"] = _dictionaryOfData["ROWINDEXES"][0]
+			ActionDictionary[1]["Previous"]["Resource"] = _duplicateUnit(_dictionaryOfData["ROW"][0])
+			ActionDictionary[1]["Current"]["Index"] = _dictionaryOfData["ROWINDEXES"][0]
+			ActionDictionary[1]["Current"]["Resource"] = _duplicateUnit(_dictionaryOfData["ROW"][0])
+			
+			# Second Enemy Unit 4,5
+			ActionDictionary[2]["Previous"]["Index"] = _dictionaryOfData["ROWINDEXES"][1]
+			ActionDictionary[2]["Previous"]["Resource"] = _duplicateUnit(_dictionaryOfData["ROW"][1])
+			ActionDictionary[2]["Current"]["Index"] = _dictionaryOfData["ROWINDEXES"][1]
+			ActionDictionary[2]["Current"]["Resource"] = _duplicateUnit(_dictionaryOfData["ROW"][1])
+			
+			# Third Enemy Unity 6,7
+			ActionDictionary[3]["Previous"]["Index"] = _dictionaryOfData["ROWINDEXES"][2]
+			ActionDictionary[3]["Previous"]["Resource"] = _duplicateUnit(_dictionaryOfData["ROW"][2])
+			ActionDictionary[3]["Current"]["Index"] = _dictionaryOfData["ROWINDEXES"][2]
+			ActionDictionary[3]["Current"]["Resource"] = _duplicateUnit(_dictionaryOfData["ROW"][2])
+			
+			# Apply Damage
+			if ActionDictionary[3]["Current"]["Resource"] != null:
+				ActionDictionary[3]["Current"]["Resource"].health -= floor(baseUnit.attack / 2)
+			if ActionDictionary[2]["Current"]["Resource"] != null:
+				ActionDictionary[2]["Current"]["Resource"].health -= floor(baseUnit.attack / 2)
+			if ActionDictionary[1]["Current"]["Resource"] != null:
+				ActionDictionary[1]["Current"]["Resource"].health -= floor(baseUnit.attack / 2)
+			
+
 
 func setupDeath(_unitIndex : int, player : bool) -> void:
 	cycleType = CycleType.Death
@@ -189,6 +200,8 @@ func setupMove(_previousUnitIndex : int, _currentUnitIndex : int, _unit : UnitRe
 
 
 func _duplicateUnit(_unit : UnitResource) -> UnitResource:
+	if _unit == null:
+		return null
 	return UnitResource.new(_unit.health, _unit.attack, _unit.sprite)
 
 

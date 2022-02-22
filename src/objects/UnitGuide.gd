@@ -7,6 +7,9 @@ export(int) var attackMin;
 export(int) var attackMax;
 export(Texture) var sprite;
 
+export(Array, UnitResource.Abilities) var appliedAbilitysEditor : Array = []
+export(Array, int) var appliedAbilitysCooldownsEditor : Array = []
+
 func _init(healthMin = 0, healthMax = 1, attackMin = 0, attackMax = 1, sprite = null) -> void:
 	self.healthMin = healthMin;
 	self.healthMax = healthMax;

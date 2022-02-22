@@ -32,7 +32,7 @@ signal FightOver
 ## E.g. Showing previous and next state resources for unit 1 (0) and unit 2 (1)
 ##
 ## var ActionDictionary : Dictionary = {
-##	0 : {
+##	0: {
 ##		"Previous": {
 ##			"Index" : -1,
 ##			"Resource" : null
@@ -206,7 +206,17 @@ func _handleAction(delta : float) -> void:
 			
 		
 		FightCycleResource.CycleType.Ability:
-			# TODO
+			match currentAction.abilityType:
+				UnitResource.Abilities.SuperchargedRound:
+					if currentAction.ActionDictionary[0]["Player"]:
+						var playerTile : Tile = playerGrid.get_child(currentAction.ActionDictionary[0]["Previous"]["Index"])
+						if playerTile.playAbilityAnimation(UnitResource.Abilities.SuperchargedRound, [opponentGrid.get_child(currentAction.ActionDictionary[3]["Previous"]["Index"]).position.x] , delta):
+							cycleActions.pop_front()
+					else:
+						var opponentTile : Tile = opponentGrid.get_child(currentAction.ActionDictionary[0]["Previous"]["Index"])
+						if opponentTile.playAbilityAnimation(UnitResource.Abilities.SuperchargedRound, [playerGrid.get_child(currentAction.ActionDictionary[1]["Previous"]["Index"]).position.x] , delta):
+							cycleActions.pop_front()
+
 			pass
 	
 	if cycleActions.size() <= 0:
