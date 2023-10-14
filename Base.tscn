@@ -1,1394 +1,1481 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=72 format=3 uid="uid://c25exextmf8nc"]
 
-[ext_resource path="res://assets/world/WaveTransition.png" type="Texture" id=1]
-[ext_resource path="res://assets/world/Stars.png" type="Texture" id=2]
-[ext_resource path="res://assets/world/objects/Tile.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/objects/UnitEgg.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/ui/EnergyBar/energy0.tres" type="Texture" id=5]
-[ext_resource path="res://assets/world/objects/Base.png" type="Texture" id=6]
-[ext_resource path="res://assets/world/WorldTiles.png" type="Texture" id=7]
-[ext_resource path="res://src/ui/BaseUI.gd" type="Script" id=8]
-[ext_resource path="res://src/Base.gd" type="Script" id=9]
-[ext_resource path="res://assets/UITheme.tres" type="Theme" id=10]
-[ext_resource path="res://src/ui/EnergyTexture.gd" type="Script" id=11]
-[ext_resource path="res://assets/ui/UISprites.png" type="Texture" id=12]
-[ext_resource path="res://src/ui/Codex.gd" type="Script" id=13]
-[ext_resource path="res://assets/ui/AttackUI.tres" type="Texture" id=14]
-[ext_resource path="res://assets/ui/LifeUI.tres" type="Texture" id=15]
-[ext_resource path="res://assets/fonts/UIFont.tres" type="DynamicFont" id=16]
-[ext_resource path="res://assets/units/emBot.png" type="Texture" id=17]
-[ext_resource path="res://assets/units/HoneyBee.png" type="Texture" id=18]
-[ext_resource path="res://assets/units/PopTanker.png" type="Texture" id=19]
-[ext_resource path="res://assets/units/prodderBot.png" type="Texture" id=20]
-[ext_resource path="res://assets/units/Tank.png" type="Texture" id=21]
-[ext_resource path="res://assets/fonts/ResultFont.tres" type="DynamicFont" id=22]
-[ext_resource path="res://assets/fonts/EndGameSubtitleFont.tres" type="DynamicFont" id=23]
+[ext_resource type="Texture2D" uid="uid://b5kyhehtp6yml" path="res://assets/world/WaveTransition.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bts07q4b4lal0" path="res://assets/world/Stars.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://dds0nbj4hsi8w" path="res://assets/world/objects/Tile.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://src/objects/UnitEgg.tscn" id="4"]
+[ext_resource type="Texture2D" path="res://assets/ui/EnergyBar/energy0.tres" id="5"]
+[ext_resource type="Texture2D" uid="uid://btngqpl3ooaj2" path="res://assets/world/objects/Base.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://baqok4etmbnlq" path="res://assets/world/WorldTiles.png" id="7"]
+[ext_resource type="Script" path="res://src/ui/BaseUI.gd" id="8"]
+[ext_resource type="Script" path="res://src/Base.gd" id="9"]
+[ext_resource type="Theme" uid="uid://c5omexpb0nvvf" path="res://assets/UITheme.tres" id="10"]
+[ext_resource type="Script" path="res://src/ui/EnergyTexture.gd" id="11"]
+[ext_resource type="Texture2D" uid="uid://ch3nhmcrlj76u" path="res://assets/ui/UISprites.png" id="12"]
+[ext_resource type="Script" path="res://src/ui/Codex.gd" id="13"]
+[ext_resource type="Texture2D" path="res://assets/ui/AttackUI.tres" id="14"]
+[ext_resource type="Texture2D" path="res://assets/ui/LifeUI.tres" id="15"]
+[ext_resource type="FontFile" path="res://assets/fonts/UIFont.tres" id="16"]
+[ext_resource type="Texture2D" uid="uid://dv5aekekoxufk" path="res://assets/units/emBot.png" id="17"]
+[ext_resource type="Texture2D" uid="uid://drsoegpe77d2p" path="res://assets/units/HoneyBee.png" id="18"]
+[ext_resource type="Texture2D" uid="uid://55m0ut2uk2bq" path="res://assets/units/PopTanker.png" id="19"]
+[ext_resource type="Texture2D" uid="uid://hb1m728i0uur" path="res://assets/units/prodderBot.png" id="20"]
+[ext_resource type="Texture2D" uid="uid://pw8k4x7dunv3" path="res://assets/units/Tank.png" id="21"]
+[ext_resource type="FontFile" uid="uid://pie0hi7dftxf" path="res://assets/fonts/ResultFont.tres" id="22"]
+[ext_resource type="FontFile" path="res://assets/fonts/EndGameSubtitleFont.tres" id="23"]
 
-[sub_resource type="TileSet" id=27]
-1/name = "Ground_1"
-1/texture = ExtResource( 7 )
-1/tex_offset = Vector2( 0, 0 )
-1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 16, 0, 16, 16 )
-1/tile_mode = 0
-1/occluder_offset = Vector2( 0, 0 )
-1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape_one_way = false
-1/shape_one_way_margin = 0.0
-1/shapes = [  ]
-1/z_index = 0
-2/name = "Dark"
-2/texture = ExtResource( 7 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 32, 0, 16, 16 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape_one_way = false
-2/shape_one_way_margin = 0.0
-2/shapes = [  ]
-2/z_index = 0
-3/name = "Wall"
-3/texture = ExtResource( 7 )
-3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 48, 0, 16, 16 )
-3/tile_mode = 0
-3/occluder_offset = Vector2( 0, 0 )
-3/navigation_offset = Vector2( 0, 0 )
-3/shape_offset = Vector2( 0, 0 )
-3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape_one_way = false
-3/shape_one_way_margin = 0.0
-3/shapes = [  ]
-3/z_index = 0
-4/name = "Ground_2"
-4/texture = ExtResource( 7 )
-4/tex_offset = Vector2( 0, 0 )
-4/modulate = Color( 1, 1, 1, 1 )
-4/region = Rect2( 0, 0, 16, 16 )
-4/tile_mode = 0
-4/occluder_offset = Vector2( 0, 0 )
-4/navigation_offset = Vector2( 0, 0 )
-4/shape_offset = Vector2( 0, 0 )
-4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-4/shape_one_way = false
-4/shape_one_way_margin = 0.0
-4/shapes = [  ]
-4/z_index = 0
-5/name = "Light"
-5/texture = ExtResource( 7 )
-5/tex_offset = Vector2( 0, 0 )
-5/modulate = Color( 1, 1, 1, 1 )
-5/region = Rect2( 64, 0, 16, 16 )
-5/tile_mode = 0
-5/occluder_offset = Vector2( 0, 0 )
-5/navigation_offset = Vector2( 0, 0 )
-5/shape_offset = Vector2( 0, 0 )
-5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape_one_way = false
-5/shape_one_way_margin = 0.0
-5/shapes = [  ]
-5/z_index = 0
-6/name = "TopTile_1"
-6/texture = ExtResource( 7 )
-6/tex_offset = Vector2( 0, 0 )
-6/modulate = Color( 1, 1, 1, 1 )
-6/region = Rect2( 80, 0, 16, 16 )
-6/tile_mode = 0
-6/occluder_offset = Vector2( 0, 0 )
-6/navigation_offset = Vector2( 0, 0 )
-6/shape_offset = Vector2( 0, 0 )
-6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape_one_way = false
-6/shape_one_way_margin = 0.0
-6/shapes = [  ]
-6/z_index = 0
-7/name = "Left_Tile_1"
-7/texture = ExtResource( 7 )
-7/tex_offset = Vector2( 0, 0 )
-7/modulate = Color( 1, 1, 1, 1 )
-7/region = Rect2( 112, 0, 16, 16 )
-7/tile_mode = 0
-7/occluder_offset = Vector2( 0, 0 )
-7/navigation_offset = Vector2( 0, 0 )
-7/shape_offset = Vector2( 0, 0 )
-7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-7/shape_one_way = false
-7/shape_one_way_margin = 0.0
-7/shapes = [  ]
-7/z_index = 0
-8/name = "CornerTile_1"
-8/texture = ExtResource( 7 )
-8/tex_offset = Vector2( 0, 0 )
-8/modulate = Color( 1, 1, 1, 1 )
-8/region = Rect2( 96, 0, 16, 16 )
-8/tile_mode = 0
-8/occluder_offset = Vector2( 0, 0 )
-8/navigation_offset = Vector2( 0, 0 )
-8/shape_offset = Vector2( 0, 0 )
-8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-8/shape_one_way = false
-8/shape_one_way_margin = 0.0
-8/shapes = [  ]
-8/z_index = 0
-9/name = "BottomTile_1"
-9/texture = ExtResource( 7 )
-9/tex_offset = Vector2( 0, 0 )
-9/modulate = Color( 1, 1, 1, 1 )
-9/region = Rect2( 128, 0, 16, 16 )
-9/tile_mode = 0
-9/occluder_offset = Vector2( 0, 0 )
-9/navigation_offset = Vector2( 0, 0 )
-9/shape_offset = Vector2( 0, 0 )
-9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-9/shape_one_way = false
-9/shape_one_way_margin = 0.0
-9/shapes = [  ]
-9/z_index = 0
-10/name = "WorldTiles.png 10"
-10/texture = ExtResource( 7 )
-10/tex_offset = Vector2( 0, 0 )
-10/modulate = Color( 1, 1, 1, 1 )
-10/region = Rect2( 144, 0, 16, 16 )
-10/tile_mode = 0
-10/occluder_offset = Vector2( 0, 0 )
-10/navigation_offset = Vector2( 0, 0 )
-10/shape_offset = Vector2( 0, 0 )
-10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-10/shape_one_way = false
-10/shape_one_way_margin = 0.0
-10/shapes = [  ]
-10/z_index = 0
-11/name = "WorldTiles.png 11"
-11/texture = ExtResource( 7 )
-11/tex_offset = Vector2( 0, 0 )
-11/modulate = Color( 1, 1, 1, 1 )
-11/region = Rect2( 160, 0, 16, 16 )
-11/tile_mode = 0
-11/occluder_offset = Vector2( 0, 0 )
-11/navigation_offset = Vector2( 0, 0 )
-11/shape_offset = Vector2( 0, 0 )
-11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-11/shape_one_way = false
-11/shape_one_way_margin = 0.0
-11/shapes = [  ]
-11/z_index = 0
-12/name = "WorldTiles.png 12"
-12/texture = ExtResource( 7 )
-12/tex_offset = Vector2( 0, 0 )
-12/modulate = Color( 1, 1, 1, 1 )
-12/region = Rect2( 176, 0, 16, 16 )
-12/tile_mode = 0
-12/occluder_offset = Vector2( 0, 0 )
-12/navigation_offset = Vector2( 0, 0 )
-12/shape_offset = Vector2( 0, 0 )
-12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-12/shape_one_way = false
-12/shape_one_way_margin = 0.0
-12/shapes = [  ]
-12/z_index = 0
-13/name = "WorldTiles.png 13"
-13/texture = ExtResource( 7 )
-13/tex_offset = Vector2( 0, 0 )
-13/modulate = Color( 1, 1, 1, 1 )
-13/region = Rect2( 192, 0, 16, 16 )
-13/tile_mode = 0
-13/occluder_offset = Vector2( 0, 0 )
-13/navigation_offset = Vector2( 0, 0 )
-13/shape_offset = Vector2( 0, 0 )
-13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-13/shape_one_way = false
-13/shape_one_way_margin = 0.0
-13/shapes = [  ]
-13/z_index = 0
-14/name = "WorldTiles.png 14"
-14/texture = ExtResource( 7 )
-14/tex_offset = Vector2( 0, 0 )
-14/modulate = Color( 1, 1, 1, 1 )
-14/region = Rect2( 208, 0, 16, 16 )
-14/tile_mode = 0
-14/occluder_offset = Vector2( 0, 0 )
-14/navigation_offset = Vector2( 0, 0 )
-14/shape_offset = Vector2( 0, 0 )
-14/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-14/shape_one_way = false
-14/shape_one_way_margin = 0.0
-14/shapes = [  ]
-14/z_index = 0
-15/name = "Stars.png 15"
-15/texture = ExtResource( 2 )
-15/tex_offset = Vector2( 0, 0 )
-15/modulate = Color( 1, 1, 1, 1 )
-15/region = Rect2( 0, 0, 16, 16 )
-15/tile_mode = 0
-15/occluder_offset = Vector2( 0, 0 )
-15/navigation_offset = Vector2( 0, 0 )
-15/shape_offset = Vector2( 0, 0 )
-15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-15/shape_one_way = false
-15/shape_one_way_margin = 0.0
-15/shapes = [  ]
-15/z_index = 0
-16/name = "Stars.png 16"
-16/texture = ExtResource( 2 )
-16/tex_offset = Vector2( 0, 0 )
-16/modulate = Color( 1, 1, 1, 1 )
-16/region = Rect2( 16, 0, 16, 16 )
-16/tile_mode = 0
-16/occluder_offset = Vector2( 0, 0 )
-16/navigation_offset = Vector2( 0, 0 )
-16/shape_offset = Vector2( 0, 0 )
-16/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-16/shape_one_way = false
-16/shape_one_way_margin = 0.0
-16/shapes = [  ]
-16/z_index = 0
-17/name = "WaveTransition.png 17"
-17/texture = ExtResource( 1 )
-17/tex_offset = Vector2( 0, 0 )
-17/modulate = Color( 1, 1, 1, 1 )
-17/region = Rect2( 0, 0, 16, 16 )
-17/tile_mode = 0
-17/occluder_offset = Vector2( 0, 0 )
-17/navigation_offset = Vector2( 0, 0 )
-17/shape_offset = Vector2( 0, 0 )
-17/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-17/shape_one_way = false
-17/shape_one_way_margin = 0.0
-17/shapes = [  ]
-17/z_index = 0
-18/name = "WaveTransition.png 18"
-18/texture = ExtResource( 1 )
-18/tex_offset = Vector2( 0, 0 )
-18/modulate = Color( 1, 1, 1, 1 )
-18/region = Rect2( 16, 0, 16, 16 )
-18/tile_mode = 0
-18/occluder_offset = Vector2( 0, 0 )
-18/navigation_offset = Vector2( 0, 0 )
-18/shape_offset = Vector2( 0, 0 )
-18/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-18/shape_one_way = false
-18/shape_one_way_margin = 0.0
-18/shapes = [  ]
-18/z_index = 0
-19/name = "WaveTransition.png 19"
-19/texture = ExtResource( 1 )
-19/tex_offset = Vector2( 0, 0 )
-19/modulate = Color( 1, 1, 1, 1 )
-19/region = Rect2( 32, 0, 16, 16 )
-19/tile_mode = 0
-19/occluder_offset = Vector2( 0, 0 )
-19/navigation_offset = Vector2( 0, 0 )
-19/shape_offset = Vector2( 0, 0 )
-19/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-19/shape_one_way = false
-19/shape_one_way_margin = 0.0
-19/shapes = [  ]
-19/z_index = 0
-20/name = "WaveTransition.png 20"
-20/texture = ExtResource( 1 )
-20/tex_offset = Vector2( 0, 0 )
-20/modulate = Color( 1, 1, 1, 1 )
-20/region = Rect2( 48, 0, 16, 16 )
-20/tile_mode = 0
-20/occluder_offset = Vector2( 0, 0 )
-20/navigation_offset = Vector2( 0, 0 )
-20/shape_offset = Vector2( 0, 0 )
-20/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-20/shape_one_way = false
-20/shape_one_way_margin = 0.0
-20/shapes = [  ]
-20/z_index = 0
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m7ufp"]
+texture = ExtResource("7")
+margins = Vector2i(16, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 64, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d88f6"]
+texture = ExtResource("7")
+margins = Vector2i(32, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 6 )
-region = Rect2( 16, 64, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iaa02"]
+texture = ExtResource("7")
+margins = Vector2i(48, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 6 )
-region = Rect2( 32, 64, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_red4o"]
+texture = ExtResource("7")
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 6 )
-region = Rect2( 48, 64, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_io4gy"]
+texture = ExtResource("7")
+margins = Vector2i(64, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 6 )
-region = Rect2( 64, 64, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_03h3v"]
+texture = ExtResource("7")
+margins = Vector2i(80, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 48, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2bewq"]
+texture = ExtResource("7")
+margins = Vector2i(112, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 6 )
-region = Rect2( 16, 48, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fdc34"]
+texture = ExtResource("7")
+margins = Vector2i(96, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 6 )
-region = Rect2( 32, 48, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h65c5"]
+texture = ExtResource("7")
+margins = Vector2i(128, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 6 )
-region = Rect2( 48, 48, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ew8ux"]
+texture = ExtResource("7")
+margins = Vector2i(144, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 6 )
-region = Rect2( 64, 48, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o4drc"]
+texture = ExtResource("7")
+margins = Vector2i(160, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 16, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ysp2"]
+texture = ExtResource("7")
+margins = Vector2i(176, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 6 )
-region = Rect2( 16, 16, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gx8v7"]
+texture = ExtResource("7")
+margins = Vector2i(192, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 6 )
-region = Rect2( 32, 16, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wtj03"]
+texture = ExtResource("7")
+margins = Vector2i(208, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 6 )
-region = Rect2( 48, 16, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lx8ba"]
+texture = ExtResource("2")
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 6 )
-region = Rect2( 64, 16, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ooxr"]
+texture = ExtResource("2")
+margins = Vector2i(16, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 32, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j4ems"]
+texture = ExtResource("1")
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 6 )
-region = Rect2( 16, 32, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e33jp"]
+texture = ExtResource("1")
+margins = Vector2i(16, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 6 )
-region = Rect2( 32, 32, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rnhk6"]
+texture = ExtResource("1")
+margins = Vector2i(32, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 6 )
-region = Rect2( 48, 32, 16, 16 )
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qpsro"]
+texture = ExtResource("1")
+margins = Vector2i(48, 0)
+0:0/next_alternative_id = 8
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+0:0/2/flip_v = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/flip_v = true
+0:0/4 = 4
+0:0/4/transpose = true
+0:0/5 = 5
+0:0/5/flip_h = true
+0:0/5/transpose = true
+0:0/6 = 6
+0:0/6/flip_v = true
+0:0/6/transpose = true
+0:0/7 = 7
+0:0/7/flip_h = true
+0:0/7/flip_v = true
+0:0/7/transpose = true
 
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 6 )
-region = Rect2( 64, 32, 16, 16 )
+[sub_resource type="TileSet" id="27"]
+sources/20 = SubResource("TileSetAtlasSource_m7ufp")
+sources/21 = SubResource("TileSetAtlasSource_d88f6")
+sources/22 = SubResource("TileSetAtlasSource_iaa02")
+sources/23 = SubResource("TileSetAtlasSource_red4o")
+sources/24 = SubResource("TileSetAtlasSource_io4gy")
+sources/25 = SubResource("TileSetAtlasSource_03h3v")
+sources/26 = SubResource("TileSetAtlasSource_2bewq")
+sources/27 = SubResource("TileSetAtlasSource_fdc34")
+sources/28 = SubResource("TileSetAtlasSource_h65c5")
+sources/29 = SubResource("TileSetAtlasSource_ew8ux")
+sources/30 = SubResource("TileSetAtlasSource_o4drc")
+sources/31 = SubResource("TileSetAtlasSource_1ysp2")
+sources/32 = SubResource("TileSetAtlasSource_gx8v7")
+sources/33 = SubResource("TileSetAtlasSource_wtj03")
+sources/34 = SubResource("TileSetAtlasSource_lx8ba")
+sources/35 = SubResource("TileSetAtlasSource_1ooxr")
+sources/36 = SubResource("TileSetAtlasSource_j4ems")
+sources/37 = SubResource("TileSetAtlasSource_e33jp")
+sources/38 = SubResource("TileSetAtlasSource_rnhk6")
+sources/39 = SubResource("TileSetAtlasSource_qpsro")
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="1"]
+atlas = ExtResource("6")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 6 )
-region = Rect2( 16, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("6")
+region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 6 )
-region = Rect2( 32, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="3"]
+atlas = ExtResource("6")
+region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 6 )
-region = Rect2( 48, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="4"]
+atlas = ExtResource("6")
+region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 6 )
-region = Rect2( 64, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id="5"]
+atlas = ExtResource("6")
+region = Rect2(64, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id=26]
-animations = [ {
-"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("6")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource("6")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="13"]
+atlas = ExtResource("6")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="14"]
+atlas = ExtResource("6")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="15"]
+atlas = ExtResource("6")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="21"]
+atlas = ExtResource("6")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="22"]
+atlas = ExtResource("6")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="23"]
+atlas = ExtResource("6")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="24"]
+atlas = ExtResource("6")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="25"]
+atlas = ExtResource("6")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="6"]
+atlas = ExtResource("6")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="7"]
+atlas = ExtResource("6")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource("6")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource("6")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource("6")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="16"]
+atlas = ExtResource("6")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="17"]
+atlas = ExtResource("6")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="18"]
+atlas = ExtResource("6")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="19"]
+atlas = ExtResource("6")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="20"]
+atlas = ExtResource("6")
+region = Rect2(64, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="26"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("1")
+}, {
+"duration": 1.0,
+"texture": SubResource("2")
+}, {
+"duration": 1.0,
+"texture": SubResource("3")
+}, {
+"duration": 1.0,
+"texture": SubResource("4")
+}, {
+"duration": 1.0,
+"texture": SubResource("5")
+}],
 "loop": true,
-"name": "LevelUp",
+"name": &"Level0",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("11")
+}, {
+"duration": 1.0,
+"texture": SubResource("12")
+}, {
+"duration": 1.0,
+"texture": SubResource("13")
+}, {
+"duration": 1.0,
+"texture": SubResource("14")
+}, {
+"duration": 1.0,
+"texture": SubResource("15")
+}],
 "loop": true,
-"name": "Level3",
+"name": &"Level1",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("21")
+}, {
+"duration": 1.0,
+"texture": SubResource("22")
+}, {
+"duration": 1.0,
+"texture": SubResource("23")
+}, {
+"duration": 1.0,
+"texture": SubResource("24")
+}, {
+"duration": 1.0,
+"texture": SubResource("25")
+}],
 "loop": true,
-"name": "Level1",
+"name": &"Level2",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("6")
+}, {
+"duration": 1.0,
+"texture": SubResource("7")
+}, {
+"duration": 1.0,
+"texture": SubResource("8")
+}, {
+"duration": 1.0,
+"texture": SubResource("9")
+}, {
+"duration": 1.0,
+"texture": SubResource("10")
+}],
 "loop": true,
-"name": "Level2",
+"name": &"Level3",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("16")
+}, {
+"duration": 1.0,
+"texture": SubResource("17")
+}, {
+"duration": 1.0,
+"texture": SubResource("18")
+}, {
+"duration": 1.0,
+"texture": SubResource("19")
+}, {
+"duration": 1.0,
+"texture": SubResource("20")
+}],
 "loop": true,
-"name": "Level0",
+"name": &"LevelUp",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 12 )
-region = Rect2( 48, 0, 16, 16 )
-margin = Rect2( 5, 5, 10, 10 )
+[sub_resource type="AtlasTexture" id="28"]
+atlas = ExtResource("12")
+region = Rect2(48, 0, 16, 16)
+margin = Rect2(5, 5, 10, 10)
 
 [node name="Base" type="Node2D"]
-position = Vector2( 640, 368 )
-scale = Vector2( 4, 4 )
-script = ExtResource( 9 )
+position = Vector2(640, 368)
+scale = Vector2(4, 4)
+script = ExtResource("9")
 
 [node name="Background" type="Node2D" parent="."]
-position = Vector2( 16, 8 )
-scale = Vector2( 8, 8 )
+position = Vector2(16, 8)
+scale = Vector2(8, 8)
 
 [node name="TileMap" type="TileMap" parent="Background"]
-tile_set = SubResource( 27 )
-cell_size = Vector2( 16, 16 )
-format = 1
-tile_data = PoolIntArray( -131082, 8, 0, -131081, 6, 0, -131080, 6, 0, -131079, 6, 0, -131078, 6, 0, -131077, 6, 0, -131076, 6, 0, -131075, 6, 0, -131074, 6, 0, -131073, 6, 0, -196608, 6, 0, -196607, 6, 0, -196606, 6, 0, -196605, 6, 0, -196604, 6, 0, -196603, 6, 0, -196602, 6, 0, -196601, 6, 0, -196600, 12, 0, -65546, 7, 0, -65545, 5, 0, -65544, 5, 0, -65543, 5, 0, -65542, 5, 0, -65541, 5, 0, -65540, 5, 0, -65539, 5, 0, -65538, 5, 0, -65537, 5, 0, -131072, 5, 0, -131071, 5, 0, -131070, 5, 0, -131069, 5, 0, -131068, 5, 0, -131067, 5, 0, -131066, 5, 0, -131065, 5, 0, -131064, 13, 0, -10, 7, 0, -9, 5, 0, -8, 5, 0, -7, 5, 0, -6, 5, 0, -5, 5, 0, -4, 5, 0, -3, 5, 0, -2, 5, 0, -1, 5, 0, -65536, 5, 0, -65535, 5, 0, -65534, 5, 0, -65533, 5, 0, -65532, 5, 0, -65531, 5, 0, -65530, 5, 0, -65529, 5, 0, -65528, 11, 0, 65526, 7, 0, 65527, 5, 0, 65528, 5, 0, 65529, 5, 0, 65530, 5, 0, 65531, 5, 0, 65532, 5, 0, 65533, 5, 0, 65534, 5, 0, 65535, 5, 0, 0, 5, 0, 1, 5, 0, 2, 5, 0, 3, 5, 0, 4, 5, 0, 5, 5, 0, 6, 5, 0, 7, 5, 0, 8, 13, 0, 131062, 7, 0, 131063, 5, 0, 131064, 5, 0, 131065, 5, 0, 131066, 5, 0, 131067, 5, 0, 131068, 5, 0, 131069, 5, 0, 131070, 5, 0, 131071, 5, 0, 65536, 5, 0, 65537, 5, 0, 65538, 5, 0, 65539, 5, 0, 65540, 5, 0, 65541, 5, 0, 65542, 5, 0, 65543, 5, 0, 65544, 11, 0, 196598, 7, 0, 196599, 5, 0, 196600, 5, 0, 196601, 5, 0, 196602, 5, 0, 196603, 5, 0, 196604, 5, 0, 196605, 5, 0, 196606, 5, 0, 196607, 5, 0, 131072, 5, 0, 131073, 5, 0, 131074, 5, 0, 131075, 5, 0, 131076, 5, 0, 131077, 5, 0, 131078, 5, 0, 131079, 5, 0, 131080, 13, 0, 262134, 10, 0, 262135, 9, 0, 262136, 9, 0, 262137, 9, 0, 262138, 9, 0, 262139, 9, 0, 262140, 9, 0, 262141, 9, 0, 262142, 9, 0, 262143, 9, 0, 196608, 9, 0, 196609, 9, 0, 196610, 9, 0, 196611, 9, 0, 196612, 9, 0, 196613, 9, 0, 196614, 9, 0, 196615, 9, 0, 196616, 14, 0 )
+tile_set = SubResource("27")
+format = 2
+layer_0/tile_data = PackedInt32Array(-131082, 27, 0, -131081, 25, 0, -131080, 25, 0, -131079, 25, 0, -131078, 25, 0, -131077, 25, 0, -131076, 25, 0, -131075, 25, 0, -131074, 25, 0, -131073, 25, 0, -196608, 25, 0, -196607, 25, 0, -196606, 25, 0, -196605, 25, 0, -196604, 25, 0, -196603, 25, 0, -196602, 25, 0, -196601, 25, 0, -196600, 31, 0, -65546, 26, 0, -65545, 24, 0, -65544, 24, 0, -65543, 24, 0, -65542, 24, 0, -65541, 24, 0, -65540, 24, 0, -65539, 24, 0, -65538, 24, 0, -65537, 24, 0, -131072, 24, 0, -131071, 24, 0, -131070, 24, 0, -131069, 24, 0, -131068, 24, 0, -131067, 24, 0, -131066, 24, 0, -131065, 24, 0, -131064, 32, 0, -10, 26, 0, -9, 24, 0, -8, 24, 0, -7, 24, 0, -6, 24, 0, -5, 24, 0, -4, 24, 0, -3, 24, 0, -2, 24, 0, -1, 24, 0, -65536, 24, 0, -65535, 24, 0, -65534, 24, 0, -65533, 24, 0, -65532, 24, 0, -65531, 24, 0, -65530, 24, 0, -65529, 24, 0, -65528, 30, 0, 65526, 26, 0, 65527, 24, 0, 65528, 24, 0, 65529, 24, 0, 65530, 24, 0, 65531, 24, 0, 65532, 24, 0, 65533, 24, 0, 65534, 24, 0, 65535, 24, 0, 0, 24, 0, 1, 24, 0, 2, 24, 0, 3, 24, 0, 4, 24, 0, 5, 24, 0, 6, 24, 0, 7, 24, 0, 8, 32, 0, 131062, 26, 0, 131063, 24, 0, 131064, 24, 0, 131065, 24, 0, 131066, 24, 0, 131067, 24, 0, 131068, 24, 0, 131069, 24, 0, 131070, 24, 0, 131071, 24, 0, 65536, 24, 0, 65537, 24, 0, 65538, 24, 0, 65539, 24, 0, 65540, 24, 0, 65541, 24, 0, 65542, 24, 0, 65543, 24, 0, 65544, 30, 0, 196598, 26, 0, 196599, 24, 0, 196600, 24, 0, 196601, 24, 0, 196602, 24, 0, 196603, 24, 0, 196604, 24, 0, 196605, 24, 0, 196606, 24, 0, 196607, 24, 0, 131072, 24, 0, 131073, 24, 0, 131074, 24, 0, 131075, 24, 0, 131076, 24, 0, 131077, 24, 0, 131078, 24, 0, 131079, 24, 0, 131080, 32, 0, 262134, 29, 0, 262135, 28, 0, 262136, 28, 0, 262137, 28, 0, 262138, 28, 0, 262139, 28, 0, 262140, 28, 0, 262141, 28, 0, 262142, 28, 0, 262143, 28, 0, 196608, 28, 0, 196609, 28, 0, 196610, 28, 0, 196611, 28, 0, 196612, 28, 0, 196613, 28, 0, 196614, 28, 0, 196615, 28, 0, 196616, 33, 0)
 
-[node name="BaseAnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -996, 0 )
-scale = Vector2( 32, 32 )
-frames = SubResource( 26 )
-animation = "Level3"
+[node name="BaseAnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-996, 0)
+scale = Vector2(32, 32)
+sprite_frames = SubResource("26")
+animation = &"Level3"
 frame = 2
-playing = true
 
 [node name="Units" type="Node2D" parent="."]
-position = Vector2( -484, 172 )
-scale = Vector2( 3, 3 )
+position = Vector2(-484, 172)
+scale = Vector2(3, 3)
 
-[node name="UnitEgg5" parent="Units" instance=ExtResource( 4 )]
-position = Vector2( -77.3333, -176 )
+[node name="UnitEgg5" parent="Units" instance=ExtResource("4")]
+position = Vector2(-77.3333, -176)
 
-[node name="UnitEgg4" parent="Units" instance=ExtResource( 4 )]
-position = Vector2( -29.3333, -118.667 )
+[node name="UnitEgg4" parent="Units" instance=ExtResource("4")]
+position = Vector2(-29.3333, -118.667)
 
-[node name="UnitEgg3" parent="Units" instance=ExtResource( 4 )]
-position = Vector2( 9.99998, -54.4 )
+[node name="UnitEgg3" parent="Units" instance=ExtResource("4")]
+position = Vector2(9.99998, -54.4)
 
-[node name="UnitEgg2" parent="Units" instance=ExtResource( 4 )]
-position = Vector2( -29.3333, 10.6667 )
+[node name="UnitEgg2" parent="Units" instance=ExtResource("4")]
+position = Vector2(-29.3333, 10.6667)
 
-[node name="UnitEgg" parent="Units" instance=ExtResource( 4 )]
-position = Vector2( -78, 54.6667 )
+[node name="UnitEgg" parent="Units" instance=ExtResource("4")]
+position = Vector2(-78, 54.6667)
 
 [node name="Grid" type="Node2D" parent="."]
-position = Vector2( 56, 16 )
-scale = Vector2( 8, 8 )
+position = Vector2(56, 16)
+scale = Vector2(8, 8)
 
-[node name="Tile" parent="Grid" instance=ExtResource( 3 )]
-position = Vector2( -24, -32 )
+[node name="Tile" parent="Grid" instance=ExtResource("3")]
+position = Vector2(-24, -32)
 
-[node name="Tile2" parent="Grid" instance=ExtResource( 3 )]
-position = Vector2( 20, -32 )
+[node name="Tile2" parent="Grid" instance=ExtResource("3")]
+position = Vector2(20, -32)
 
-[node name="Tile3" parent="Grid" instance=ExtResource( 3 )]
-position = Vector2( 64, -32 )
+[node name="Tile3" parent="Grid" instance=ExtResource("3")]
+position = Vector2(64, -32)
 
-[node name="Tile4" parent="Grid" instance=ExtResource( 3 )]
-position = Vector2( -24, 0 )
+[node name="Tile4" parent="Grid" instance=ExtResource("3")]
+position = Vector2(-24, 0)
 
-[node name="Tile5" parent="Grid" instance=ExtResource( 3 )]
-position = Vector2( 20, 0 )
+[node name="Tile5" parent="Grid" instance=ExtResource("3")]
+position = Vector2(20, 0)
 
-[node name="Tile6" parent="Grid" instance=ExtResource( 3 )]
-position = Vector2( 64, 0 )
+[node name="Tile6" parent="Grid" instance=ExtResource("3")]
+position = Vector2(64, 0)
 
-[node name="Tile7" parent="Grid" instance=ExtResource( 3 )]
-position = Vector2( -24, 32 )
+[node name="Tile7" parent="Grid" instance=ExtResource("3")]
+position = Vector2(-24, 32)
 
-[node name="Tile8" parent="Grid" instance=ExtResource( 3 )]
-position = Vector2( 20, 32 )
+[node name="Tile8" parent="Grid" instance=ExtResource("3")]
+position = Vector2(20, 32)
 
-[node name="Tile9" parent="Grid" instance=ExtResource( 3 )]
-position = Vector2( 64, 32 )
+[node name="Tile9" parent="Grid" instance=ExtResource("3")]
+position = Vector2(64, 32)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BaseUI" type="Control" parent="CanvasLayer"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 10 )
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 2
+theme = ExtResource("10")
+script = ExtResource("8")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/BaseUI"]
+layout_mode = 0
 anchor_right = 1.0
-margin_bottom = 40.0
+offset_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="EnergyTexture" type="TextureRect" parent="CanvasLayer/BaseUI/CenterContainer"]
-margin_left = 320.0
-margin_right = 960.0
-margin_bottom = 128.0
-rect_min_size = Vector2( 640, 128 )
-texture = ExtResource( 5 )
-expand = true
+custom_minimum_size = Vector2(640, 128)
+layout_mode = 2
+texture = ExtResource("5")
+expand_mode = 1
 stretch_mode = 1
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("11")
 
 [node name="StartRoundButton" type="Button" parent="CanvasLayer/BaseUI"]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -176.0
-margin_bottom = 48.0
-hint_tooltip = "You must have a unit in the field!"
-theme = ExtResource( 10 )
+offset_left = -176.0
+offset_bottom = 48.0
+tooltip_text = "You must have a unit in the field!"
+theme = ExtResource("10")
 text = "Start Round"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ShopButton" type="Button" parent="CanvasLayer/BaseUI"]
-margin_right = 112.0
-margin_bottom = 48.0
-theme = ExtResource( 10 )
+layout_mode = 0
+offset_right = 112.0
+offset_bottom = 48.0
+theme = ExtResource("10")
 text = "Shop"
-icon = SubResource( 28 )
-align = 0
+icon = SubResource("28")
 expand_icon = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="RoundLabel" type="Label" parent="CanvasLayer/BaseUI"]
+layout_mode = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -24.0
-margin_right = 40.0
-theme = ExtResource( 10 )
+offset_top = -24.0
+offset_right = 40.0
+theme = ExtResource("10")
 text = "Round: "
 
 [node name="Codex" type="Control" parent="CanvasLayer"]
 visible = false
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-script = ExtResource( 13 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("13")
 
 [node name="CodexButton" type="Button" parent="CanvasLayer/Codex"]
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -145.0
-margin_top = -64.0
-theme = ExtResource( 10 )
+offset_left = -145.0
+offset_top = -64.0
+theme = ExtResource("10")
 text = "Codex"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="InfoPanel" type="Panel" parent="CanvasLayer/Codex"]
 visible = false
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 0
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -400.0
-margin_top = -360.0
-margin_bottom = 360.0
-rect_min_size = Vector2( 400, 0 )
+offset_left = -400.0
+offset_top = -360.0
+offset_bottom = 360.0
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Codex/InfoPanel"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BackButton" type="Button" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer"]
-margin_right = 100.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 100, 50 )
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
 size_flags_horizontal = 0
-theme = ExtResource( 10 )
+theme = ExtResource("10")
 text = "Back"
 
 [node name="ButtonContainer" type="CenterContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer"]
 visible = false
-margin_top = 54.0
-margin_right = 400.0
-margin_bottom = 720.0
+layout_mode = 2
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/ButtonContainer"]
-margin_left = 50.0
-margin_top = 183.0
-margin_right = 350.0
-margin_bottom = 483.0
-custom_constants/separation = 100
+layout_mode = 2
+theme_override_constants/separation = 100
 
 [node name="UnitsButton" type="Button" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/ButtonContainer/VBoxContainer"]
-margin_right = 300.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 300, 100 )
-theme = ExtResource( 10 )
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme = ExtResource("10")
 text = "Units"
 
 [node name="PerksButton" type="Button" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/ButtonContainer/VBoxContainer"]
-margin_top = 200.0
-margin_right = 300.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 300, 100 )
-theme = ExtResource( 10 )
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+theme = ExtResource("10")
 text = "Perks / Effects"
 
 [node name="UnitContainer" type="ScrollContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer"]
 visible = false
-margin_top = 54.0
-margin_right = 400.0
-margin_bottom = 720.0
+layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource( 10 )
-scroll_horizontal_enabled = false
+theme = ExtResource("10")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer"]
-margin_right = 400.0
-margin_bottom = 1006.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="UnitDescription" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer"]
-margin_right = 388.0
-margin_bottom = 231.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_left = 6
-custom_constants/margin_bottom = 32
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_bottom = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription"]
-margin_left = 6.0
-margin_right = 388.0
-margin_bottom = 199.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource( 17 )
-expand = true
+texture = ExtResource("17")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer"]
-margin_left = 68.0
-margin_right = 382.0
-margin_bottom = 199.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer/MarginContainer"]
-margin_right = 314.0
-margin_bottom = 199.0
+layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource( 10 )
+theme = ExtResource("10")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 314.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 0, 64 )
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 314.0
-margin_bottom = 31.0
-theme = ExtResource( 10 )
+layout_mode = 2
+theme = ExtResource("10")
 text = "EmBot"
-align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_top = 35.0
-margin_right = 314.0
-margin_bottom = 99.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 2
 
 [node name="Life" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-margin_right = 155.0
-margin_bottom = 64.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life"]
-margin_right = 155.0
-margin_bottom = 64.0
+layout_mode = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-mouse_filter = 2
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource( 15 )
-expand = true
+mouse_filter = 2
+texture = ExtResource("15")
+expand_mode = 1
 
 [node name="LifeUI" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life/HBoxContainer"]
-margin_left = 68.0
-margin_top = 16.0
-margin_right = 105.0
-margin_bottom = 47.0
-theme = ExtResource( 10 )
-custom_fonts/font = ExtResource( 16 )
+layout_mode = 2
+theme = ExtResource("10")
+theme_override_fonts/font = ExtResource("16")
 text = "3-4"
 
 [node name="Attack" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-margin_left = 159.0
-margin_right = 314.0
-margin_bottom = 64.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack"]
-margin_right = 155.0
-margin_bottom = 64.0
+layout_mode = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 mouse_filter = 2
-texture = ExtResource( 14 )
-expand = true
+texture = ExtResource("14")
+expand_mode = 1
 
 [node name="AttackUI" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack/HBoxContainer"]
-margin_left = 68.0
-margin_top = 16.0
-margin_right = 100.0
-margin_bottom = 47.0
-theme = ExtResource( 10 )
-custom_fonts/font = ExtResource( 16 )
+layout_mode = 2
+theme = ExtResource("10")
+theme_override_fonts/font = ExtResource("16")
 text = "0-1"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription/HBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 103.0
-margin_right = 314.0
-margin_bottom = 199.0
-theme = ExtResource( 10 )
+layout_mode = 2
+theme = ExtResource("10")
 text = "Every Round, A friendly unit may be moved to another position."
-fit_content_height = true
 
 [node name="UnitDescription2" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer"]
-margin_top = 235.0
-margin_right = 388.0
-margin_bottom = 434.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_left = 6
-custom_constants/margin_bottom = 32
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_bottom = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2"]
-margin_left = 6.0
-margin_right = 388.0
-margin_bottom = 167.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource( 18 )
-expand = true
+texture = ExtResource("18")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer"]
-margin_left = 68.0
-margin_right = 382.0
-margin_bottom = 167.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer/MarginContainer"]
-margin_right = 314.0
-margin_bottom = 167.0
+layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource( 10 )
+theme = ExtResource("10")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 314.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 0, 64 )
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 314.0
-margin_bottom = 31.0
-theme = ExtResource( 10 )
+layout_mode = 2
+theme = ExtResource("10")
 text = "BoostBee"
-align = 1
-valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_top = 35.0
-margin_right = 314.0
-margin_bottom = 99.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 2
 
 [node name="Life" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-margin_right = 155.0
-margin_bottom = 64.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life"]
-margin_right = 155.0
-margin_bottom = 64.0
+layout_mode = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-mouse_filter = 2
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource( 15 )
-expand = true
+mouse_filter = 2
+texture = ExtResource("15")
+expand_mode = 1
 
 [node name="LifeUI" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life/HBoxContainer"]
-margin_left = 68.0
-margin_top = 16.0
-margin_right = 105.0
-margin_bottom = 47.0
-theme = ExtResource( 10 )
-custom_fonts/font = ExtResource( 16 )
+layout_mode = 2
+theme = ExtResource("10")
+theme_override_fonts/font = ExtResource("16")
 text = "0-2"
 
 [node name="Attack" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-margin_left = 159.0
-margin_right = 314.0
-margin_bottom = 64.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack"]
-margin_right = 155.0
-margin_bottom = 64.0
+layout_mode = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 mouse_filter = 2
-texture = ExtResource( 14 )
-expand = true
+texture = ExtResource("14")
+expand_mode = 1
 
 [node name="AttackUI" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack/HBoxContainer"]
-margin_left = 68.0
-margin_top = 16.0
-margin_right = 100.0
-margin_bottom = 47.0
-theme = ExtResource( 10 )
-custom_fonts/font = ExtResource( 16 )
+layout_mode = 2
+theme = ExtResource("10")
+theme_override_fonts/font = ExtResource("16")
 text = "1-2"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription2/HBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 103.0
-margin_right = 314.0
-margin_bottom = 167.0
-theme = ExtResource( 10 )
+layout_mode = 2
+theme = ExtResource("10")
 text = "Boost all friendly units by 1hp and 1 attack."
-fit_content_height = true
 
 [node name="UnitDescription3" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer"]
-margin_top = 438.0
-margin_right = 388.0
-margin_bottom = 701.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_left = 6
-custom_constants/margin_bottom = 32
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_bottom = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3"]
-margin_left = 6.0
-margin_right = 388.0
-margin_bottom = 231.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource( 19 )
-expand = true
+texture = ExtResource("19")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer"]
-margin_left = 68.0
-margin_right = 382.0
-margin_bottom = 231.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer/MarginContainer"]
-margin_right = 314.0
-margin_bottom = 231.0
+layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource( 10 )
+theme = ExtResource("10")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 314.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 0, 64 )
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 314.0
-margin_bottom = 31.0
-theme = ExtResource( 10 )
+layout_mode = 2
+theme = ExtResource("10")
 text = "BoostBee"
-align = 1
-valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_top = 35.0
-margin_right = 314.0
-margin_bottom = 99.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 2
 
 [node name="Life" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-margin_right = 155.0
-margin_bottom = 64.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life"]
-margin_right = 155.0
-margin_bottom = 64.0
+layout_mode = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-mouse_filter = 2
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource( 15 )
-expand = true
+mouse_filter = 2
+texture = ExtResource("15")
+expand_mode = 1
 
 [node name="LifeUI" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life/HBoxContainer"]
-margin_left = 68.0
-margin_top = 16.0
-margin_right = 105.0
-margin_bottom = 47.0
-theme = ExtResource( 10 )
-custom_fonts/font = ExtResource( 16 )
+layout_mode = 2
+theme = ExtResource("10")
+theme_override_fonts/font = ExtResource("16")
 text = "3-4"
 
 [node name="Attack" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-margin_left = 159.0
-margin_right = 314.0
-margin_bottom = 64.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack"]
-margin_right = 155.0
-margin_bottom = 64.0
+layout_mode = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 mouse_filter = 2
-texture = ExtResource( 14 )
-expand = true
+texture = ExtResource("14")
+expand_mode = 1
 
 [node name="AttackUI" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack/HBoxContainer"]
-margin_left = 68.0
-margin_top = 16.0
-margin_right = 100.0
-margin_bottom = 47.0
-theme = ExtResource( 10 )
-custom_fonts/font = ExtResource( 16 )
+layout_mode = 2
+theme = ExtResource("10")
+theme_override_fonts/font = ExtResource("16")
 text = "0-1"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription3/HBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 103.0
-margin_right = 314.0
-margin_bottom = 231.0
-theme = ExtResource( 10 )
+layout_mode = 2
+theme = ExtResource("10")
 text = "On third round, sacrifices self and applies attack to all enemy units"
-fit_content_height = true
 
 [node name="UnitDescription4" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer"]
-margin_top = 705.0
-margin_right = 388.0
-margin_bottom = 936.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_left = 6
-custom_constants/margin_bottom = 32
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_bottom = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4"]
-margin_left = 6.0
-margin_right = 388.0
-margin_bottom = 199.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource( 20 )
-expand = true
+texture = ExtResource("20")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer"]
-margin_left = 68.0
-margin_right = 382.0
-margin_bottom = 199.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer/MarginContainer"]
-margin_right = 314.0
-margin_bottom = 199.0
+layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource( 10 )
+theme = ExtResource("10")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 314.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 0, 64 )
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 314.0
-margin_bottom = 31.0
-theme = ExtResource( 10 )
+layout_mode = 2
+theme = ExtResource("10")
 text = "Prodder Mortar"
-align = 1
-valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_top = 35.0
-margin_right = 314.0
-margin_bottom = 99.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 2
 
 [node name="Life" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-margin_right = 155.0
-margin_bottom = 64.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life"]
-margin_right = 155.0
-margin_bottom = 64.0
+layout_mode = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-mouse_filter = 2
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource( 15 )
-expand = true
+mouse_filter = 2
+texture = ExtResource("15")
+expand_mode = 1
 
 [node name="LifeUI" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life/HBoxContainer"]
-margin_left = 68.0
-margin_top = 16.0
-margin_right = 100.0
-margin_bottom = 47.0
-theme = ExtResource( 10 )
-custom_fonts/font = ExtResource( 16 )
+layout_mode = 2
+theme = ExtResource("10")
+theme_override_fonts/font = ExtResource("16")
 text = "1-3"
 
 [node name="Attack" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-margin_left = 159.0
-margin_right = 314.0
-margin_bottom = 64.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack"]
-margin_right = 155.0
-margin_bottom = 64.0
+layout_mode = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 mouse_filter = 2
-texture = ExtResource( 14 )
-expand = true
+texture = ExtResource("14")
+expand_mode = 1
 
 [node name="AttackUI" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack/HBoxContainer"]
-margin_left = 68.0
-margin_top = 16.0
-margin_right = 105.0
-margin_bottom = 47.0
-theme = ExtResource( 10 )
-custom_fonts/font = ExtResource( 16 )
+layout_mode = 2
+theme = ExtResource("10")
+theme_override_fonts/font = ExtResource("16")
 text = "2-5"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription4/HBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 103.0
-margin_right = 314.0
-margin_bottom = 199.0
-theme = ExtResource( 10 )
+layout_mode = 2
+theme = ExtResource("10")
 text = "Regardless of position, attacks enemy frontline of the same lane."
-fit_content_height = true
 
 [node name="UnitDescription5" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer"]
-margin_top = 940.0
-margin_right = 388.0
-margin_bottom = 1171.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_left = 6
-custom_constants/margin_bottom = 32
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_bottom = 32
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5"]
-margin_left = 6.0
-margin_right = 388.0
-margin_bottom = 199.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 size_flags_vertical = 0
-texture = ExtResource( 21 )
-expand = true
+texture = ExtResource("21")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer"]
-margin_left = 68.0
-margin_right = 382.0
-margin_bottom = 199.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer/MarginContainer"]
-margin_right = 314.0
-margin_bottom = 199.0
+layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource( 10 )
+theme = ExtResource("10")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer/MarginContainer/VBoxContainer"]
-margin_right = 314.0
-margin_bottom = 99.0
-rect_min_size = Vector2( 0, 64 )
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 314.0
-margin_bottom = 31.0
-theme = ExtResource( 10 )
+layout_mode = 2
+theme = ExtResource("10")
 text = "Boom Tank"
-align = 1
-valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_top = 35.0
-margin_right = 314.0
-margin_bottom = 99.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 2
 
 [node name="Life" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-margin_right = 155.0
-margin_bottom = 64.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life"]
-margin_right = 155.0
-margin_bottom = 64.0
+layout_mode = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
-mouse_filter = 2
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource( 15 )
-expand = true
+mouse_filter = 2
+texture = ExtResource("15")
+expand_mode = 1
 
 [node name="LifeUI" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Life/HBoxContainer"]
-margin_left = 68.0
-margin_top = 16.0
-margin_right = 105.0
-margin_bottom = 47.0
-theme = ExtResource( 10 )
-custom_fonts/font = ExtResource( 16 )
+layout_mode = 2
+theme = ExtResource("10")
+theme_override_fonts/font = ExtResource("16")
 text = "3-5"
 
 [node name="Attack" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-margin_left = 159.0
-margin_right = 314.0
-margin_bottom = 64.0
-mouse_filter = 2
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack"]
-margin_right = 155.0
-margin_bottom = 64.0
+layout_mode = 2
 mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack/HBoxContainer"]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_min_size = Vector2( 64, 64 )
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 mouse_filter = 2
-texture = ExtResource( 14 )
-expand = true
+texture = ExtResource("14")
+expand_mode = 1
 
 [node name="AttackUI" type="Label" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Attack/HBoxContainer"]
-margin_left = 68.0
-margin_top = 16.0
-margin_right = 105.0
-margin_bottom = 47.0
-theme = ExtResource( 10 )
-custom_fonts/font = ExtResource( 16 )
+layout_mode = 2
+theme = ExtResource("10")
+theme_override_fonts/font = ExtResource("16")
 text = "3-6"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/UnitContainer/VBoxContainer/UnitDescription5/HBoxContainer/MarginContainer/VBoxContainer"]
-margin_top = 103.0
-margin_right = 314.0
-margin_bottom = 199.0
-theme = ExtResource( 10 )
+layout_mode = 2
+theme = ExtResource("10")
 text = "Every third attack, attacks enemies behind frontline for half damage."
-fit_content_height = true
 
 [node name="PerkContainer" type="ScrollContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer"]
 visible = false
-margin_top = 54.0
-margin_right = 400.0
-margin_bottom = 720.0
+layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource( 10 )
-scroll_horizontal_enabled = false
+theme = ExtResource("10")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/PerkContainer"]
-margin_right = 400.0
-margin_bottom = 666.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/PerkContainer/VBoxContainer"]
-margin_right = 400.0
-margin_bottom = 258.0
-custom_constants/margin_top = 2
-custom_constants/margin_left = 8
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Codex/InfoPanel/VBoxContainer/PerkContainer/VBoxContainer/MarginContainer"]
-margin_left = 8.0
-margin_top = 2.0
-margin_right = 400.0
-margin_bottom = 258.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
-bbcode_text = "[color=yellow][b][u]Booster[/u][/b][/color]
-[b]Start of battle[/b], give half of this unit’s health to the unit in front.
-
-[color=yellow][b][u]Last Gift[/u][/b][/color]
-[b]On Death[/b], Boost all units attack by 2 [b]permanently[/b].
-"
 text = "Booster
 Start of battle, give half of this unit’s health to the unit in front.
 
 Last Gift
 On Death, Boost all units attack by 2 permanently.
 "
-fit_content_height = true
 
 [node name="EndGame" type="ColorRect" parent="CanvasLayer"]
 visible = false
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+color = Color(0, 0, 0, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/EndGame"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/EndGame/CenterContainer"]
-margin_left = 370.0
-margin_top = 270.0
-margin_right = 910.0
-margin_bottom = 450.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/EndGame/CenterContainer/VBoxContainer"]
-margin_right = 540.0
-margin_bottom = 128.0
-theme = ExtResource( 10 )
-custom_fonts/font = ExtResource( 22 )
+layout_mode = 2
+theme = ExtResource("10")
+theme_override_fonts/font = ExtResource("22")
 text = "Game Over"
-align = 1
 
 [node name="roundLabel2" type="Label" parent="CanvasLayer/EndGame/CenterContainer/VBoxContainer"]
-margin_top = 132.0
-margin_right = 540.0
-margin_bottom = 180.0
-theme = ExtResource( 10 )
-custom_fonts/font = ExtResource( 23 )
+layout_mode = 2
+theme = ExtResource("10")
+theme_override_fonts/font = ExtResource("23")
 text = "You Survived x Rounds"
-align = 1
 
 [connection signal="button_up" from="CanvasLayer/BaseUI/StartRoundButton" to="." method="_on_StartRoundButton_button_up"]
 [connection signal="button_up" from="CanvasLayer/BaseUI/ShopButton" to="." method="_on_ShopButton_button_up"]

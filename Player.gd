@@ -40,7 +40,7 @@ func removeUnitEgg(egg : UnitResource) -> void:
 	for index in range(0, unitEggs.size()):
 		var unit : UnitResource = unitEggs[index];
 		if unit == egg:
-			unitEggs.remove(index)
+			unitEggs.remove_at(index)
 			return
 
 func restart() -> void:

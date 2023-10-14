@@ -16,13 +16,13 @@ var actionStage : int = 0
 
 var fightOver : bool = false
 
-onready var timer : Timer = $ClockTimer
-onready var actionTimer : Timer = $ActionTimer
-onready var playerGrid : Node2D = $Tiles/PlayerGrid
-onready var opponentGrid : Node2D = $Tiles/OpponentGrid
-onready var fightX : Node2D = $FightX
-onready var animationPlayer : AnimationPlayer = $CanvasLayer/Results/AnimationPlayer
-onready var winnerLabel : Label = $CanvasLayer/Results/CenterContainer/Label
+@onready var timer : Timer = $ClockTimer
+@onready var actionTimer : Timer = $ActionTimer
+@onready var playerGrid : Node2D = $Tiles/PlayerGrid
+@onready var opponentGrid : Node2D = $Tiles/OpponentGrid
+@onready var fightX : Node2D = $FightX
+@onready var animationPlayer : AnimationPlayer = $CanvasLayer/Results/AnimationPlayer
+@onready var winnerLabel : Label = $CanvasLayer/Results/CenterContainer/Label
 
 signal GoToBase
 signal FightOver

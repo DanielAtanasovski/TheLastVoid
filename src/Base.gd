@@ -2,13 +2,13 @@ extends Node2D
 class_name BaseState
 
 
-onready var UI : Control = $CanvasLayer/BaseUI
-onready var grid : Node2D = $Grid
-onready var eggs : Node2D = $Units
-onready var base : AnimatedSprite = $BaseAnimatedSprite
-onready var roundLabel : Label = $CanvasLayer/BaseUI/RoundLabel
-onready var roundLabel2 : Label = $CanvasLayer/EndGame/CenterContainer/VBoxContainer/roundLabel2
-onready var endGameScreen : ColorRect = $CanvasLayer/EndGame
+@onready var UI : Control = $CanvasLayer/BaseUI
+@onready var grid : Node2D = $Grid
+@onready var eggs : Node2D = $Units
+@onready var base : AnimatedSprite2D = $BaseAnimatedSprite
+@onready var roundLabel : Label = $CanvasLayer/BaseUI/RoundLabel
+@onready var roundLabel2 : Label = $CanvasLayer/EndGame/CenterContainer/VBoxContainer/roundLabel2
+@onready var endGameScreen : ColorRect = $CanvasLayer/EndGame
 
 var selectedEgg : UnitEgg = null
 var selectedUnit : Tile = null
@@ -19,10 +19,10 @@ signal GoToFight
 func _ready() -> void:
 	for x in grid.get_children():
 		var tile : Tile = x as Tile;
-		tile.connect("isClicked", self, "onTileClicked")
+		tile.connect("isClicked", Callable(self, "onTileClicked"))
 	for x in eggs.get_children():
 		var egg : UnitEgg = x as UnitEgg;
-		egg.connect("isLeftClicked", self, "onEggClicked");
+		egg.connect("isLeftClicked", Callable(self, "onEggClicked"));
 	_updateHealth()
 
 func setVisible(visible : bool):
@@ -64,8 +64,8 @@ func _updateHealth() -> void:
 			base.animation = "Level1"
 		1:
 			base.animation = "Level0"
-	roundLabel.text = "Round: " + String(Player.gameRound)
-	roundLabel2.text = "You Survived " + String(Player.gameRound) + " Rounds!"
+	roundLabel.text = "Round: " + str(Player.gameRound)
+	roundLabel2.text = "You Survived " + str(Player.gameRound) + " Rounds!"
 	
 	if Player.hp <= 0:
 		endGameScreen.visible = true

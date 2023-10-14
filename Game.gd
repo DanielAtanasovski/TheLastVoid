@@ -16,13 +16,13 @@ var tutorial : bool = false;
 var gameRound : int = 0
 
 # References
-onready var startGameTimer : Timer = $Timers/StartGameTimer;
-onready var camera : Camera2D = $Camera2D
+@onready var startGameTimer : Timer = $Timers/StartGameTimer;
+@onready var camera : Camera2D = $Camera2D
 
 # Scenes
-onready var baseScene : BaseState = $Base
-onready var shopScene : Node2D = $Shop
-onready var fightScene : Node2D = $Fight
+@onready var baseScene : BaseState = $Base
+@onready var shopScene : Node2D = $Shop
+@onready var fightScene : Node2D = $Fight
 
 # Shop
 var generatedShop : bool = false
@@ -36,11 +36,11 @@ var fightActions : Dictionary = {}
 func _ready() -> void:
 	startGameTimer.wait_time = 1;
 	startGameTimer.start();
-	shopScene.connect("GoToBase", self, "goToBase");
-	baseScene.connect("GoToShop", self, "goToShop");
-	baseScene.connect("GoToFight", self, "goToFight");
+	shopScene.connect("GoToBase", Callable(self, "goToBase"));
+	baseScene.connect("GoToShop", Callable(self, "goToShop"));
+	baseScene.connect("GoToFight", Callable(self, "goToFight"));
 #	fightScene.connect("GoToBase", self, "goToBase")
-	fightScene.connect("FightOver", self, "endRound")
+	fightScene.connect("FightOver", Callable(self, "endRound"))
 	
 
 func _process(delta: float) -> void:
@@ -77,7 +77,7 @@ func transitionToShopState() -> void:
 	if !generatedShop:
 		shopScene.setupShop();
 		generatedShop = true;
-	if camera.get_camera_screen_center().distance_to(shopScene.global_position) <= 2:
+	if camera.get_screen_center_position().distance_to(shopScene.global_position) <= 2:
 		state = STATE.SHOP;
 		shopScene.setVisible(true)
 
@@ -89,7 +89,7 @@ func transitionToBaseState() -> void:
 	camera.position = baseScene.position
 	shopScene.setVisible(false)
 	state = STATE.TRANSITION_TO_BASE
-	if camera.get_camera_screen_center().distance_to(baseScene.global_position) <= 2:
+	if camera.get_screen_center_position().distance_to(baseScene.global_position) <= 2:
 		state = STATE.BASE;
 		baseScene.setVisible(true);
 		baseScene.updateUnitEggs();
@@ -103,7 +103,7 @@ func transitionToFightState() -> void:
 		fightActions = FightManager.calculateFight()
 		calculateFight = true
 	
-	if camera.get_camera_screen_center().distance_to(fightScene.global_position) <= 2:
+	if camera.get_screen_center_position().distance_to(fightScene.global_position) <= 2:
 		state = STATE.FIGHT
 		fightScene.playReplay(fightActions)
 		calculateFight = false

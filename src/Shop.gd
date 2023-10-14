@@ -1,25 +1,25 @@
 extends Node2D
 
-export(Array, Resource) var unitGuides : Array
-export(int) var tier2Cost : int
-export(int) var tier3Cost : int
-export(int) var refreshCost : int
+@export var unitGuides : Array # (Array, Resource)
+@export var tier2Cost: int
+@export var tier3Cost: int
+@export var refreshCost: int
 signal GoToBase;
 
-onready var UI : Control = $CanvasLayer/UI
-onready var tier2BarAnimation : AnimationPlayer = $Tiers/Tier1/AnimatedSprite/AnimationPlayer2;
-onready var tier3BarAnimation : AnimationPlayer = $Tiers/Tier2/AnimatedSprite2/AnimationPlayer;
-onready var tier2Button : Button = $CanvasLayer/UI/Tier2;
-onready var tier3Button : Button = $CanvasLayer/UI/Tier3;
-onready var tier2Texture : TextureRect = $CanvasLayer/UI/Tier2Cost;
+@onready var UI : Control = $CanvasLayer/UI
+@onready var tier2BarAnimation : AnimationPlayer = $Tiers/Tier1/AnimatedSprite2D/AnimationPlayer2;
+@onready var tier3BarAnimation : AnimationPlayer = $Tiers/Tier2/AnimatedSprite2/AnimationPlayer;
+@onready var tier2Button : Button = $CanvasLayer/UI/Tier2;
+@onready var tier3Button : Button = $CanvasLayer/UI/Tier3;
+@onready var tier2Texture : TextureRect = $CanvasLayer/UI/Tier2Cost;
 #onready var tier3Texture : TextureRect = $CanvasLayer/UI/Tier3Cost;
 
-onready var refreshButton : Button = $CanvasLayer/UI/MarginContainer/CenterContainer2/RefreshButton
+@onready var refreshButton : Button = $CanvasLayer/UI/MarginContainer/CenterContainer2/RefreshButton
 
 # Tiers
-onready var tier1 : Node2D = $Units/Tier1
-onready var tier2 : Node2D = $Units/Tier2
-onready var tier3 : Node2D = $Units/Tier3
+@onready var tier1 : Node2D = $Units/Tier1
+@onready var tier2 : Node2D = $Units/Tier2
+@onready var tier3 : Node2D = $Units/Tier3
 
 func _process(delta: float) -> void:
 	if (Player.energy < tier2Cost):
@@ -107,8 +107,8 @@ func setupTier(tier : Node2D, cost : int) -> void:
 		child.setCost(cost);
 		child.unit = unit
 		child.setSprite(unit.sprite)
-		child.connect("isLeftClicked", self, "onLeftClickUnitEgg");
-		child.connect("isRightClicked", self, "onRightClickUnitEgg")
+		child.connect("isLeftClicked", Callable(self, "onLeftClickUnitEgg"));
+		child.connect("isRightClicked", Callable(self, "onRightClickUnitEgg"))
 
 func onLeftClickUnitEgg(egg : UnitEgg) -> void:
 	if (Player.buyUnit(egg.unit, egg.cost)):

@@ -1,12 +1,12 @@
 extends Area2D
 class_name Tile
 
-onready var sprite : AnimatedSprite = $AnimatedSprite;
-onready var unitSprite : Sprite = $Sprite
-onready var lifeLabel : Label = $Sprite/InfoPanel/HBoxContainer/Life/HBoxContainer/LifeUI
-onready var attackLabel : Label = $Sprite/InfoPanel/HBoxContainer/Attack/HBoxContainer/AttackUI
-onready var infoPanel : Control = $Sprite/InfoPanel
-onready var deathAnimation : AnimatedSprite = $DeathAnimation
+@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D;
+@onready var unitSprite : Sprite2D = $Sprite2D
+@onready var lifeLabel : Label = $Sprite2D/InfoPanel/HBoxContainer/Life/HBoxContainer/LifeUI
+@onready var attackLabel : Label = $Sprite2D/InfoPanel/HBoxContainer/Attack/HBoxContainer/AttackUI
+@onready var infoPanel : Control = $Sprite2D/InfoPanel
+@onready var deathAnimation : AnimatedSprite2D = $DeathAnimation
 
 # Moving
 var spritePosition : Vector2
@@ -40,16 +40,16 @@ func _ready() -> void:
 
 func setUnitData(unit : UnitResource):
 	unitSprite.texture = unit.sprite;
-	lifeLabel.text = String(unit.health);
-	attackLabel.text = String(unit.attack);
+	lifeLabel.text = str(unit.health);
+	attackLabel.text = str(unit.attack);
 
 func faceLeft(value : bool):
 	facingLeft = value
 	unitSprite.set_flip_h(value)
 	if value:
-		infoPanel.rect_position = rightUnitInfoPos
+		infoPanel.position = rightUnitInfoPos
 	else:
-		infoPanel.rect_position = leftUnitInfoPos
+		infoPanel.position = leftUnitInfoPos
 
 func resetTile():
 	unitSprite.texture = null;
@@ -93,8 +93,8 @@ func moveToHome(_time : float, delta : float) -> bool:
 
 # Returns true on done
 func playDeathAnimation() -> bool:
-	if deathAnimation.playing:
-		if deathAnimation.frame == deathAnimation.frames.get_frame_count("default")-1:
+	if deathAnimation.is_playing():
+		if deathAnimation.frame == deathAnimation.sprite_frames.get_frame_count("default")-1:
 			deathAnimation.stop()
 			deathAnimation.visible = false
 			deathAnimation.frame = 0
@@ -122,7 +122,7 @@ func _playSuperchargedRoundAnimation(_endX : int) -> bool:
 			return true
 		return false
 	else:
-		bullet = bulletScene.instance()
+		bullet = bulletScene.instantiate()
 		add_child(bullet)
 		animStarted = true
 		return false
@@ -130,9 +130,9 @@ func _playSuperchargedRoundAnimation(_endX : int) -> bool:
 
 func setSelected(selected: bool):
 	if selected:
-		unitSprite.modulate = Color.gray;
+		unitSprite.modulate = Color.GRAY;
 	else:
-		unitSprite.modulate = Color.white;
+		unitSprite.modulate = Color.WHITE;
 		
 func setVisible(value : bool) -> void:
 	infoPanel.visible = value
@@ -153,5 +153,5 @@ func _on_Tile_mouse_exited() -> void:
 func _on_Tile_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if (event is InputEventMouseButton):
 		var mouseEvent := event as InputEventMouseButton
-		if (mouseEvent.button_index == BUTTON_LEFT and mouseEvent.pressed == false):
+		if (mouseEvent.button_index == MOUSE_BUTTON_LEFT and mouseEvent.is_pressed() == false):
 			emit_signal("isClicked", get_index());

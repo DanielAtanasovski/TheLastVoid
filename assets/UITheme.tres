@@ -1,38 +1,38 @@
-[gd_resource type="Theme" load_steps=7 format=2]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://c5omexpb0nvvf"]
 
-[ext_resource path="res://assets/fonts/UIFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/ui/ButtonBackground.png" type="Texture" id=2]
+[ext_resource type="FontFile" path="res://assets/fonts/UIFont.tres" id="1"]
+[ext_resource type="Texture2D" uid="uid://dd47rphn1pptu" path="res://assets/ui/ButtonBackground.png" id="2"]
 
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 16, 16 )
-modulate_color = Color( 0.490196, 0.490196, 0.490196, 1 )
+[sub_resource type="StyleBoxTexture" id="1"]
+texture = ExtResource("2")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.490196, 0.490196, 0.490196, 1)
 
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 16, 16 )
-modulate_color = Color( 0.729412, 0.729412, 0.729412, 1 )
+[sub_resource type="StyleBoxTexture" id="2"]
+texture = ExtResource("2")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.729412, 0.729412, 0.729412, 1)
 
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 16, 16 )
+[sub_resource type="StyleBoxTexture" id="3"]
+texture = ExtResource("2")
+region_rect = Rect2(0, 0, 16, 16)
 
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 2 )
-region_rect = Rect2( 0, 0, 16, 16 )
-modulate_color = Color( 0.360784, 0.360784, 0.360784, 1 )
+[sub_resource type="StyleBoxTexture" id="4"]
+texture = ExtResource("2")
+region_rect = Rect2(0, 0, 16, 16)
+modulate_color = Color(0.360784, 0.360784, 0.360784, 1)
 
 [resource]
-default_font = ExtResource( 1 )
-Button/colors/font_color = Color( 1, 1, 1, 1 )
-Button/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
-Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
-Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
+default_font = ExtResource("1")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_color_disabled = Color(0, 0, 0, 1)
+Button/colors/font_color_focus = Color(0, 0, 0, 1)
+Button/colors/font_color_hover = Color(0, 0, 0, 1)
+Button/colors/font_color_pressed = Color(0, 0, 0, 1)
 Button/constants/hseparation = 0
-Button/fonts/font = ExtResource( 1 )
-Button/styles/disabled = SubResource( 1 )
+Button/fonts/font = ExtResource("1")
+Button/styles/disabled = SubResource("1")
 Button/styles/focus = null
-Button/styles/hover = SubResource( 2 )
-Button/styles/normal = SubResource( 3 )
-Button/styles/pressed = SubResource( 4 )
+Button/styles/hover = SubResource("2")
+Button/styles/normal = SubResource("3")
+Button/styles/pressed = SubResource("4")

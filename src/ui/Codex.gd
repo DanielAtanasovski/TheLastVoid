@@ -9,12 +9,12 @@ enum CodexState {
 }
 
 var state : int = CodexState.Closed
-export(Array, Resource) var unitGuides : Array = []
+@export var unitGuides : Array = [] # (Array, Resource)
 
-onready var infoPanel = $InfoPanel
-onready var buttonContainer = $InfoPanel/VBoxContainer/ButtonContainer
-onready var unitContainer = $InfoPanel/VBoxContainer/UnitContainer
-onready var perkContainer = $InfoPanel/VBoxContainer/PerkContainer
+@onready var infoPanel = $InfoPanel
+@onready var buttonContainer = $InfoPanel/VBoxContainer/ButtonContainer
+@onready var unitContainer = $InfoPanel/VBoxContainer/UnitContainer
+@onready var perkContainer = $InfoPanel/VBoxContainer/PerkContainer
 
 func setVisible(value : bool) -> void:
 	infoPanel.visible = value

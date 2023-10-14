@@ -1,13 +1,13 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://assets/world/WaveTransition.png" type="Texture" id=1]
-[ext_resource path="res://assets/world/Stars.png" type="Texture" id=2]
+[ext_resource path="res://assets/world/WaveTransition.png" type="Texture2D" id=1]
+[ext_resource path="res://assets/world/Stars.png" type="Texture2D" id=2]
 [ext_resource path="res://src/objects/UnitEgg.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/objects/HoneyBeeGuide.tres" type="Resource" id=4]
 [ext_resource path="res://src/Shop.gd" type="Script" id=5]
-[ext_resource path="res://assets/world/WorldTiles.png" type="Texture" id=6]
-[ext_resource path="res://assets/ui/EnergyBar/energy0.tres" type="Texture" id=7]
-[ext_resource path="res://assets/ui/EnergyLevel/Level2.tres" type="Texture" id=8]
+[ext_resource path="res://assets/world/WorldTiles.png" type="Texture2D" id=6]
+[ext_resource path="res://assets/ui/EnergyBar/energy0.tres" type="Texture2D" id=7]
+[ext_resource path="res://assets/ui/EnergyLevel/Level2.tres" type="Texture2D" id=8]
 [ext_resource path="res://assets/UITheme.tres" type="Theme" id=10]
 [ext_resource path="res://src/ui/EnergyTexture.gd" type="Script" id=11]
 
@@ -68,7 +68,7 @@
 4/shape_one_way_margin = 0.0
 4/shapes = [  ]
 4/z_index = 0
-5/name = "Light"
+5/name = "Light3D"
 5/texture = ExtResource( 6 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
@@ -319,8 +319,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 20, 3 ), Vector2( 20, 0.375 ) ]
 }
@@ -331,8 +331,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -14 ), Vector2( 0, 8 ) ]
 }
@@ -343,8 +343,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.203922, 1, 0.309804, 1 ) ]
 }
@@ -358,8 +358,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, -41 ) ]
 }
@@ -370,8 +370,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 20, 0.375 ) ]
 }
@@ -382,8 +382,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -398,8 +398,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 20, 3 ), Vector2( 20, 0.375 ) ]
 }
@@ -410,8 +410,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -62 ), Vector2( 0, -41 ) ]
 }
@@ -422,8 +422,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.203922, 1, 0.309804, 1 ) ]
 }
@@ -437,8 +437,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 0, -41 ) ]
 }
@@ -449,8 +449,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector2( 20, 0.375 ) ]
 }
@@ -461,8 +461,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -484,7 +484,7 @@ modulate = Color( 1, 1, 1, 0.705882 )
 tile_set = SubResource( 27 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( -589824, 15, 0, -458760, 15, 0, -458755, 15, 0, -524282, 16, 0, -393223, 15, 0, -393217, 16, 0, -393214, 15, 0, -393209, 16, 0, -262154, 16, 0, -262148, 15, 0, -327671, 15, 0, -196616, 16, 0, -262141, 16, 0, -262133, 16, 0, -196608, 15, 0, -65541, 15, 0, -131066, 16, 0, -9, 16, 0, -7, 15, 0, -65534, 15, 0, 9, 15, 0, 131061, 15, 0, 131066, 16, 0, 196603, 15, 0, 131074, 16, 0, 131078, 15, 0, 262136, 16, 0, 262143, 15, 0, 196612, 16, 0, 327677, 15, 0, 262151, 16, 0, 393207, 15, 0 )
+tile_data = PackedInt32Array( -589824, 15, 0, -458760, 15, 0, -458755, 15, 0, -524282, 16, 0, -393223, 15, 0, -393217, 16, 0, -393214, 15, 0, -393209, 16, 0, -262154, 16, 0, -262148, 15, 0, -327671, 15, 0, -196616, 16, 0, -262141, 16, 0, -262133, 16, 0, -196608, 15, 0, -65541, 15, 0, -131066, 16, 0, -9, 16, 0, -7, 15, 0, -65534, 15, 0, 9, 15, 0, 131061, 15, 0, 131066, 16, 0, 196603, 15, 0, 131074, 16, 0, 131078, 15, 0, 262136, 16, 0, 262143, 15, 0, 196612, 16, 0, 327677, 15, 0, 262151, 16, 0, 393207, 15, 0 )
 
 [node name="Units" type="Node2D" parent="."]
 position = Vector2( 0, 110 )
@@ -537,13 +537,13 @@ scale = Vector2( 8, 8 )
 visible = false
 position = Vector2( 0, 2.5 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Tiers/Tier1"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tiers/Tier1"]
 visible = false
 position = Vector2( 0, -14 )
 scale = Vector2( 20, 3 )
 frames = SubResource( 30 )
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Tiers/Tier1/AnimatedSprite"]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Tiers/Tier1/AnimatedSprite2D"]
 reset_on_save = false
 anims/BoughtTier = SubResource( 34 )
 anims/RESET = SubResource( 35 )
@@ -552,7 +552,7 @@ anims/RESET = SubResource( 35 )
 visible = false
 position = Vector2( 0, 2.5 )
 
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="Tiers/Tier2"]
+[node name="AnimatedSprite2" type="AnimatedSprite2D" parent="Tiers/Tier2"]
 visible = false
 position = Vector2( 0, -62 )
 scale = Vector2( 20, 3 )
@@ -577,7 +577,7 @@ __meta__ = {
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/UI"]
 anchor_right = 1.0
-margin_bottom = 40.0
+offset_bottom = 40.0
 mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -586,10 +586,10 @@ __meta__ = {
 }
 
 [node name="EnergyTexture" type="TextureRect" parent="CanvasLayer/UI/CenterContainer"]
-margin_left = 370.0
-margin_right = 910.0
-margin_bottom = 96.0
-rect_min_size = Vector2( 540, 96 )
+offset_left = 370.0
+offset_right = 910.0
+offset_bottom = 96.0
+custom_minimum_size = Vector2( 540, 96 )
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 1
@@ -600,10 +600,10 @@ __meta__ = {
 
 [node name="Tier2" type="Button" parent="CanvasLayer/UI"]
 visible = false
-margin_left = 544.0
-margin_top = 416.0
-margin_right = 744.0
-margin_bottom = 456.0
+offset_left = 544.0
+offset_top = 416.0
+offset_right = 744.0
+offset_bottom = 456.0
 theme = ExtResource( 10 )
 text = "Buy Tier"
 __meta__ = {
@@ -614,10 +614,10 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 576.0
-margin_top = 336.0
-margin_right = -561.0
-margin_bottom = -304.0
+offset_left = 576.0
+offset_top = 336.0
+offset_right = -561.0
+offset_bottom = -304.0
 mouse_filter = 2
 texture = ExtResource( 8 )
 expand = true
@@ -627,10 +627,10 @@ __meta__ = {
 
 [node name="Tier3" type="Button" parent="CanvasLayer/UI"]
 visible = false
-margin_left = 544.0
-margin_top = 256.0
-margin_right = 744.0
-margin_bottom = 296.0
+offset_left = 544.0
+offset_top = 256.0
+offset_right = 744.0
+offset_bottom = 296.0
 theme = ExtResource( 10 )
 text = "Buy Tier"
 __meta__ = {
@@ -638,8 +638,8 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="CanvasLayer/UI"]
-margin_right = 232.0
-margin_bottom = 40.0
+offset_right = 232.0
+offset_bottom = 40.0
 text = "Return To Base"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -648,8 +648,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="CanvasLayer/UI"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -315.0
-margin_bottom = 65.0
+offset_left = -315.0
+offset_bottom = 65.0
 text = "Left Click: Buy
 Right Click: Lock / Unlock"
 align = 1
@@ -660,43 +660,43 @@ uppercase = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -200.0
+offset_top = -200.0
 mouse_filter = 2
-custom_constants/margin_bottom = 100
+theme_override_constants/margin_bottom = 100
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer/UI/MarginContainer"]
-margin_right = 1280.0
-margin_bottom = 100.0
+offset_right = 1280.0
+offset_bottom = 100.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RefreshButton" type="Button" parent="CanvasLayer/UI/MarginContainer/CenterContainer2"]
-margin_left = 560.0
-margin_top = 20.0
-margin_right = 720.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 160, 60 )
+offset_left = 560.0
+offset_top = 20.0
+offset_right = 720.0
+offset_bottom = 80.0
+custom_minimum_size = Vector2( 160, 60 )
 text = "Refresh"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UI/MarginContainer/CenterContainer2"]
-margin_left = 564.0
-margin_top = 18.0
-margin_right = 716.0
-margin_bottom = 82.0
+offset_left = 564.0
+offset_top = 18.0
+offset_right = 716.0
+offset_bottom = 82.0
 mouse_filter = 2
-custom_constants/margin_left = 120
-custom_constants/margin_bottom = 32
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_bottom = 32
 
 [node name="refreshCostImage" type="TextureRect" parent="CanvasLayer/UI/MarginContainer/CenterContainer2/MarginContainer"]
-margin_left = 120.0
-margin_right = 152.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 32, 32 )
+offset_left = 120.0
+offset_right = 152.0
+offset_bottom = 32.0
+custom_minimum_size = Vector2( 32, 32 )
 mouse_filter = 2
 texture = ExtResource( 8 )
 expand = true

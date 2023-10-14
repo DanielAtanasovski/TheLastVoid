@@ -1,7 +1,7 @@
-extends Sprite
+extends Sprite2D
 class_name Bullet
 
-export(int) var velocity;
+@export var velocity: int;
 
 var dir : int = 1;
 
